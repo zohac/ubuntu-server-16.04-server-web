@@ -181,7 +181,7 @@ php composer-setup.php --install-dir=/usr/local/bin
 php -r "unlink('composer-setup.php');"
 echo "
 alias composer='/usr/local/bin/composer.phar'" >> ~/.bashrc
-. ~/.bashrc
+source ~/.bashrc
 
 #
 # PHP-CS-FIXER
@@ -197,7 +197,7 @@ printf "${NORMAL}"
 composer global require friendsofphp/php-cs-fixer
 echo "
 alias php-cs-fixer='$HOME/.config/composer/vendor/bin/php-cs-fixer'" >> ~/.bashrc
-. ~/.bashrc
+source ~/.bashrc
 
 #
 # PHP code sniffer
@@ -215,7 +215,7 @@ echo "
 alias phpcs='$HOME/.config/composer/vendor/bin/phpcs'
 alias phpcbf='$HOME/.config/composer/vendor/bin/phpcbf'
 export PATH='$HOME/.config/composer/vendor/bin'" >> ~/.bashrc
-. ~/.bashrc
+source ~/.bashrc
 
 #
 # PHP Mess Detector
@@ -233,7 +233,7 @@ chmod u+x phpmd.phar
 mv phpmd.phar /usr/local/bin/phpmd.phar
 echo "
 alias phpmd='/usr/local/bin/phpmd.phar'" >> ~/.bashrc
-. ~/.bashrc
+source ~/.bashrc
 
 #
 # PHP Copy/Paste Detector (PHPCPD)
@@ -355,8 +355,6 @@ printf "${NORMAL}"
 apt-get install -y samba
 
 #Add to end of config file
-#Add to end of config file
-cp /etc/samba/smb.conf $HOME/smb.conf
 echo "
 [Share]
 comment = Share
@@ -365,9 +363,7 @@ writeable = yes
 guest ok = yes
 create mask = 0644
 directory mask = 0755
-force user = $USER" >> $HOME/smb.conf
-
-mv $HOME/smb.conf /etc/samba/smb.conf
+force user = $USER" >> /etc/samba/smb.conf
 
 if [ ! -z ${MY_HOSTNAME+x} ]; then
     touch $HOME/hostname
@@ -437,8 +433,3 @@ echo '/____/\____/_/ /_/\__,_/\___/  web server installation script...is now ins
 echo ''
 echo ''
 printf "${NORMAL}"
-
-#
-# Launching the shell
-#
-zsh
