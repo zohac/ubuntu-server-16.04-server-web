@@ -165,25 +165,6 @@ xdebug.remote_enable = On
 service apache2 restart
 
 #
-# Shell custom
-#
-printf "${GREEN}"
-echo ''
-echo '###########################################'
-echo '#            zsh installation             #'
-echo '###########################################'
-echo ''
-echo ''
-printf "${NORMAL}"
-apt-get install -y fonts-powerline
-apt-get install -y zsh
-git clone https://github.com/robbyrussell/oh-my-zsh.git  ~/.oh-my-zsh
-cp ~/.zshrc ~/.zshrc.orig
-cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
-chsh -s /bin/zsh
-sed -i 's/ZSH_THEME="robbyrussell"/ZSH_THEME="agnoster"/g' ~/.zshrc
-
-#
 # Composer
 #
 printf "${GREEN}"
@@ -199,8 +180,8 @@ php -r "if (hash_file('SHA384', 'composer-setup.php') === '544e09ee996cdf60ece38
 php composer-setup.php --install-dir=/usr/local/bin
 php -r "unlink('composer-setup.php');"
 echo "
-alias composer='/usr/local/bin/composer.phar'" >> ~/.zshrc
-. ~/.zshrc
+alias composer='/usr/local/bin/composer.phar'" >> ~/.bashrc
+. ~/.bashrc
 
 #
 # PHP-CS-FIXER
@@ -215,8 +196,8 @@ echo ''
 printf "${NORMAL}"
 composer global require friendsofphp/php-cs-fixer
 echo "
-alias php-cs-fixer='$HOME/.config/composer/vendor/bin/php-cs-fixer'" >> ~/.zshrc
-. ~/.zshrc
+alias php-cs-fixer='$HOME/.config/composer/vendor/bin/php-cs-fixer'" >> ~/.bashrc
+. ~/.bashrc
 
 #
 # PHP code sniffer
@@ -233,8 +214,8 @@ composer global require "squizlabs/php_codesniffer=*"
 echo "
 alias phpcs='$HOME/.config/composer/vendor/bin/phpcs'
 alias phpcbf='$HOME/.config/composer/vendor/bin/phpcbf'
-export PATH='$HOME/.config/composer/vendor/bin'" >> ~/.zshrc
-. ~/.zshrc
+export PATH='$HOME/.config/composer/vendor/bin'" >> ~/.bashrc
+. ~/.bashrc
 
 #
 # PHP Mess Detector
@@ -251,8 +232,8 @@ wget -c http://static.phpmd.org/php/latest/phpmd.phar
 chmod u+x phpmd.phar
 mv phpmd.phar /usr/local/bin/phpmd.phar
 echo "
-alias phpmd='/usr/local/bin/phpmd.phar'" >> ~/.zshrc
-. ~/.zshrc
+alias phpmd='/usr/local/bin/phpmd.phar'" >> ~/.bashrc
+. ~/.bashrc
 
 #
 # PHP Copy/Paste Detector (PHPCPD)
@@ -270,7 +251,7 @@ wget https://phar.phpunit.de/phpcpd.phar
 chmod +x phpcpd.phar
 mv phpcpd.phar /usr/local/bin/phpcpd
 echo "
-alias phpcpd='/usr/local/bin/phpcpd'" >> ~/.zshrc
+alias phpcpd='/usr/local/bin/phpcpd'" >> ~/.bashrc
 
 # example of use:
 #

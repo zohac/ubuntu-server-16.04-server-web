@@ -11,7 +11,6 @@ The script installs the following components:
 * MySQL
 * PHP7.1
 * xdebug
-* The zsh shell with oh-my-zsh framework
 * Composer
 * PHP-CS-FIXER
 * PHP code sniffer
