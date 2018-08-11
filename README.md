@@ -16,7 +16,9 @@ The script installs the following components:
 * PHP code sniffer
 * PHP md
 * PHP Copy/Paste Detector
+* BlackFire
 * samba
+* zsh
 
 ## Requirements
 
@@ -37,7 +39,7 @@ You can also download the script source directly from the Git clone:
 
 ### Run the script
 
-    sudo bash ubuntu-server-16.04-server-web/install.sh
+    bash ubuntu-server-16.04-server-web/install.sh
 
 ## Issues
 

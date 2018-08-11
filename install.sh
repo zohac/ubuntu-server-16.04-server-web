@@ -420,6 +420,24 @@ sudo apt-get install -y blackfire-agent
 sudo apt-get install -y blackfire-php
 
 #
+# Shell custom
+#
+printf "${GREEN}"
+echo ''
+echo '###########################################'
+echo '#            zsh installation             #'
+echo '###########################################'
+echo ''
+echo ''
+printf "${NORMAL}"
+sudo apt-get install -y fonts-powerline
+sudo apt-get install -y zsh
+git clone https://github.com/robbyrussell/oh-my-zsh.git  ~/.oh-my-zsh
+cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
+sed -i 's/ZSH_THEME="robbyrussell"/ZSH_THEME="agnoster"/g' ~/.zshrc
+chsh -s /bin/zsh
+
+#
 # Cleaning after installation
 #
 printf "${GREEN}"
