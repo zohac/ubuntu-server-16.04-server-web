@@ -47,8 +47,8 @@ echo '###########################################'
 echo ''
 echo ''
 printf "${NORMAL}"
-sudo apt-get -y update
-sudo apt-get -y upgrade
+apt-get -y update
+apt-get -y upgrade
 
 # Liste des paquets pouvant-être mis à jour
 # apt list --upgradable
@@ -64,10 +64,10 @@ echo '###########################################'
 echo ''
 echo ''
 printf "${NORMAL}"
-sudo apt-get install -y build-essential
-sudo apt-get install -y apt-transport-https
-sudo apt-get install -y zip
-sudo apt-get install -y python-pip
+apt-get install -y build-essential
+apt-get install -y apt-transport-https
+apt-get install -y zip
+apt-get install -y python-pip
 git clone https://github.com/b-ryan/powerline-shell
 cd powerline-shell
 python setup.py install
@@ -83,10 +83,10 @@ echo '###########################################'
 echo ''
 echo ''
 printf "${NORMAL}"
-sudo apt-get install -y apache2
+apt-get install -y apache2
 # Ajout du module rewrite
 a2enmod rewrite
-sudo service apache2 restart
+service apache2 restart
 
 #
 # Installation MySQL
@@ -99,7 +99,7 @@ echo '###########################################'
 echo ''
 echo ''
 printf "${NORMAL}"
-sudo apt-get install -y mysql-server
+apt-get install -y mysql-server
 
 #
 # Installation php7.1
@@ -112,18 +112,18 @@ echo '###########################################'
 echo ''
 echo ''
 printf "${NORMAL}"
-sudo apt-get install -y python-software-properties
-sudo add-apt-repository -y ppa:ondrej/php
-sudo apt-get update -y
+apt-get install -y python-software-properties
+add-apt-repository -y ppa:ondrej/php
+apt-get update -y
 # apt-cache pkgnames | grep php7.1
-sudo apt-get install -y php7.1 php7.1-cli php7.1-common libapache2-mod-php7.1 php7.1-mysql php7.1-fpm php7.1-curl php7.1-gd php7.1-bz2 php7.1-mcrypt php7.1-json php7.1-tidy php7.1-mbstring php7.1-xml php7.1-dev php7.1-soap php-redis php-memcached php7.1-zip php7.1-apcu php7.1-sqlite3
-sudo a2enmod proxy_fcgi setenvif
-sudo a2enconf php7.1-fpm
+apt-get install -y php7.1 php7.1-cli php7.1-common libapache2-mod-php7.1 php7.1-mysql php7.1-fpm php7.1-curl php7.1-gd php7.1-bz2 php7.1-mcrypt php7.1-json php7.1-tidy php7.1-mbstring php7.1-xml php7.1-dev php7.1-soap php-redis php-memcached php7.1-zip php7.1-apcu php7.1-sqlite3
+a2enmod proxy_fcgi setenvif
+a2enconf php7.1-fpm
 
 # Configuration date
 sed -i "s/;date.timezone =/date.timezone = Europe\/Paris/g" /etc/php/7.1/apache2/php.ini
 
-sudo service apache2 restart
+service apache2 restart
 
 #
 # Installation de xdebug
@@ -162,7 +162,7 @@ zend_extension="/usr/lib/php/20160303/xdebug.so"
 xdebug.remote_enable = On
 ' >> /etc/php/7.1/cli/php.ini
 
-sudo service apache2 restart
+service apache2 restart
 
 #
 # Shell custom
@@ -175,8 +175,8 @@ echo '###########################################'
 echo ''
 echo ''
 printf "${NORMAL}"
-sudo apt-get install -y fonts-powerline
-sudo apt-get install -y zsh
+apt-get install -y fonts-powerline
+apt-get install -y zsh
 git clone https://github.com/robbyrussell/oh-my-zsh.git  ~/.oh-my-zsh
 cp ~/.zshrc ~/.zshrc.orig
 cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
@@ -196,7 +196,7 @@ echo ''
 printf "${NORMAL}"
 php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
 php -r "if (hash_file('SHA384', 'composer-setup.php') === '544e09ee996cdf60ece3804abc52599c22b1f40f4323403c44d44fdfdd586475ca9813a858088ffbc1f233e9b180f061') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
-sudo php composer-setup.php --install-dir=/usr/local/bin
+php composer-setup.php --install-dir=/usr/local/bin
 php -r "unlink('composer-setup.php');"
 echo "
 alias composer='/usr/local/bin/composer.phar'" >> ~/.zshrc
@@ -249,7 +249,7 @@ echo ''
 printf "${NORMAL}"
 wget -c http://static.phpmd.org/php/latest/phpmd.phar
 chmod u+x phpmd.phar
-sudo mv phpmd.phar /usr/local/bin/phpmd.phar
+mv phpmd.phar /usr/local/bin/phpmd.phar
 echo "
 alias phpmd='/usr/local/bin/phpmd.phar'" >> ~/.zshrc
 . ~/.zshrc
@@ -268,7 +268,7 @@ echo ''
 printf "${NORMAL}"
 wget https://phar.phpunit.de/phpcpd.phar
 chmod +x phpcpd.phar
-sudo mv phpcpd.phar /usr/local/bin/phpcpd
+mv phpcpd.phar /usr/local/bin/phpcpd
 echo "
 alias phpcpd='/usr/local/bin/phpcpd'" >> ~/.zshrc
 
@@ -290,12 +290,12 @@ alias phpcpd='/usr/local/bin/phpcpd'" >> ~/.zshrc
 #echo ''
 #echo ''
 #printf "${NORMAL}"
-#sudo apt-get -y install postfix
-#sudo apt-get install -y mailutils
+#apt-get -y install postfix
+#apt-get install -y mailutils
 # Site internet
 # home-ubuntu-server
 # /etc/postfix/main.cf
-# sudo dpkg-reconfigure postfix
+# dpkg-reconfigure postfix
 # echo "Cesi est un mail de test" | mail -s "Sujet de test" fenrir0680@gmail.com
 
 #
@@ -314,9 +314,9 @@ if [ ! -d "$HOME/www" ]; then
   mkdir $HOME/www
 fi
 
-sudo chown -R $USER:www-data $HOME/www
+chown -R $USER:www-data $HOME/www
 
-sudo mv /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-available/000-default.conf.old
+mv /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-available/000-default.conf.old
 touch $HOME/000-default.conf
 echo "
 <VirtualHost *:80>
@@ -352,10 +352,10 @@ echo "
 vim: syntax=apache ts=4 sw=4 sts=4 sr noet"  >>  $HOME/000-default.conf
 sed -i "s/vim:/# vim:/g" $HOME/000-default.conf
 
-sudo mv  $HOME/000-default.conf /etc/apache2/sites-available/000-default.conf
+mv  $HOME/000-default.conf /etc/apache2/sites-available/000-default.conf
 
-sudo apache2ctl configtest
-sudo service apache2 reload
+apache2ctl configtest
+service apache2 reload
 
 #
 # Installation de samba
@@ -371,11 +371,11 @@ printf "${NORMAL}"
 
 #!/bin/bash
 
-sudo apt-get install -y samba
+apt-get install -y samba
 
 #Add to end of config file
 #Add to end of config file
-sudo cp /etc/samba/smb.conf $HOME/smb.conf
+cp /etc/samba/smb.conf $HOME/smb.conf
 echo "
 [Share]
 comment = Share
@@ -386,16 +386,16 @@ create mask = 0644
 directory mask = 0755
 force user = $USER" >> $HOME/smb.conf
 
-sudo mv $HOME/smb.conf /etc/samba/smb.conf
+mv $HOME/smb.conf /etc/samba/smb.conf
 
 if [ ! -z ${MY_HOSTNAME+x} ]; then
     touch $HOME/hostname
     echo "$MY_HOSTNAME" >> $HOME/hostname
 
-    sudo mv $HOME/hostname /etc/hostname
+    mv $HOME/hostname /etc/hostname
 fi
 
-sudo service smbd restart
+service smbd restart
 
 #
 # Installation of Blackfire
@@ -408,24 +408,24 @@ echo '###########################################'
 echo ''
 echo ''
 printf "${NORMAL}"
-wget -q -O - https://packagecloud.io/gpg.key | sudo apt-key add -
-echo "deb http://packages.blackfire.io/debian any main" | sudo tee /etc/apt/sources.list.d/blackfire.list
-sudo apt-get update -y
-sudo apt-get install -y blackfire-agent
+wget -q -O - https://packagecloud.io/gpg.key | apt-key add -
+echo "deb http://packages.blackfire.io/debian any main" | tee /etc/apt/sources.list.d/blackfire.list
+apt-get update -y
+apt-get install -y blackfire-agent
 # If is the first install :
 #
 # blackfire config
 # ClientID
 # ClientToken
-# sudo /etc/init.d/blackfire-agent restart
+# /etc/init.d/blackfire-agent restart
 #
 
-sudo apt-get install -y blackfire-agent
+apt-get install -y blackfire-agent
 # blackfire config
 # ClientID
 # ClientToken
 
-sudo apt-get install -y blackfire-php
+apt-get install -y blackfire-php
 
 #
 # Cleaning after installation
@@ -438,13 +438,13 @@ echo '###########################################'
 echo ''
 echo ''
 printf "${NORMAL}"
-sudo apt-get -y update
-sudo apt-get -y upgrade
-sudo apt-get -y autoremove --purge
-sudo apt-get -y autoclean
+apt-get -y update
+apt-get -y upgrade
+apt-get -y autoremove --purge
+apt-get -y autoclean
 
 if [ -d "raspbian---installation-serveur" ]; then
-  sudo rm -r raspbian---installation-serveur
+  rm -r raspbian---installation-serveur
 fi
 
 printf "${GREEN}" echo ''

@@ -34,15 +34,15 @@ Otherwise comment there with a #.
 
 You can also download the script source directly from the Git clone:
 
-    git clone https://github.com/zohac/raspbian---installation-serveur.git
+    git clone https://github.com/zohac/ubuntu-server-16.04-server-web.git
 
 ### Run the script
 
-    bash raspbian---installation-serveur/install.sh
+    sudo bash ubuntu-server-16.04-server-web/install.sh
 
 ## Issues
 
-Bug reports and feature requests can be submitted on the [Github Issue Tracker](https://github.com/zohac/raspbian---installation-serveur/issues)
+Bug reports and feature requests can be submitted on the [Github Issue Tracker](https://github.com/zohac/ubuntu-server-16.04-server-web/issues)
 
 ## Author
 
