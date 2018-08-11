@@ -507,7 +507,7 @@ do
             echo "Remember to restart !"
             break
         ;;
-        Y|y|)
+        Y|y)
             #Redémarrage
             sudo reboot
             break
