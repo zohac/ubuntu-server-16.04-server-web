@@ -437,6 +437,35 @@ cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
 sed -i 's/ZSH_THEME="robbyrussell"/ZSH_THEME="agnoster"/g' ~/.zshrc
 chsh -s /bin/zsh
 
+echo "
+#
+# Composer  
+#
+alias composer='/usr/local/bin/composer.phar'
+
+#
+# PHP-CS-FIXER
+#
+alias php-cs-fixer='$HOME/.config/composer/vendor/bin/php-cs-fixer'
+
+#
+# PHP code sniffer
+#
+alias phpcs='$HOME/.config/composer/vendor/bin/phpcs'
+alias phpcbf='$HOME/.config/composer/vendor/bin/phpcbf'
+
+#
+# PHP Mess Detector
+#
+alias phpmd='/usr/local/bin/phpmd.phar'
+
+#
+# PHP Copy/Paste Detector  
+#
+alias phpcpd='/usr/local/bin/phpcpd'" >> ~/.zshrc
+
+source ~/.zshrc
+
 #
 # Cleaning after installation
 #
@@ -467,4 +496,26 @@ echo ''
 echo ''
 printf "${NORMAL}"
 
-sudo reboot
+while :
+do
+
+    echo "You should restart [Y/n] ?"
+    read REP
+
+    case $REP in
+        N|n)
+            echo "Remember to restart !"
+            break
+        ;;
+        Y|y|)
+            #Redémarrage
+            sudo reboot
+            break
+        ;;
+        *)
+            echo "Error, you had to answer yes[Y] or no[n]."
+        ;;
+    esac
+done
+
+exit 0;
