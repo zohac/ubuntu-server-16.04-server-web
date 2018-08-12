@@ -31,7 +31,7 @@ echo '| | /| / / _ \/ / ___/ __ \/ __ `__ \/ _ \'
 echo '| |/ |/ /  __/ / /__/ /_/ / / / / / /  __/'
 echo '|__/|__/\___/_/\___/\____/_/ /_/ /_/\___/ '
 echo ''
-echo 'Installing Apache2/PHP7.1/MySQL for a development web server on a raspberrypi.'
+echo 'Installing Apache2/PHP7.1/MySQL for a development web server on ubuntu server 16.04.'
 echo ''
 echo ''
 printf "${NORMAL}"
