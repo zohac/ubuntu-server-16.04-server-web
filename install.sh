@@ -405,10 +405,11 @@ echo "deb http://packages.blackfire.io/debian any main" | sudo tee /etc/apt/sour
 sudo apt-get update -y
 sudo apt-get install -y blackfire-agent
 # If is the first install :
-#
-# blackfire config
+# sudo blackfire-agent -register
+# 
 # ClientID
 # ClientToken
+#
 # sudo /etc/init.d/blackfire-agent restart
 #
 
