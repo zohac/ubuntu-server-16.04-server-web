@@ -180,6 +180,9 @@ php -r "if (hash_file('SHA384', 'composer-setup.php') === '544e09ee996cdf60ece38
 sudo php composer-setup.php --install-dir=/usr/local/bin
 php -r "unlink('composer-setup.php');"
 echo "
+#
+# Composer
+#
 alias composer='/usr/local/bin/composer.phar'" >> ~/.bashrc
 source ~/.bashrc
 
@@ -263,6 +266,7 @@ echo "
 # PHP Copy/Paste Detector  
 #
 alias phpcpd='/usr/local/bin/phpcpd'" >> ~/.bashrc
+source ~/.bashrc
 
 # example of use:
 #

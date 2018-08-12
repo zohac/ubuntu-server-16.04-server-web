@@ -56,21 +56,9 @@ You can also download the script source directly from the Git clone:
 
 ### Installing the Blackfire CLI tool
 
-1. Install the blackfire-agent package:
-
-        sudo apt-get install blackfire-agent
-
-2. Run the config command to initialize the client:
+* Run the config command to initialize the client:
 
         blackfire config
-
-### Installing the PHP Probe
-
-1. Install the blackfire-php package:
-
-        sudo apt-get install blackfire-php
-
-2. To finish the probe installation, restart your web server or PHP-FPM and check that there are no error messages.
 
 ## Issues
 
