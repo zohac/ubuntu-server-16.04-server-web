@@ -137,13 +137,16 @@ echo ''
 echo ''
 printf "${NORMAL}"
 
-pecl install xdebug
+sudo pecl install xdebug
 
 # setup Xdebug
-echo "
+sudo -s <<eof
+ echo '
 xdebug.show_error_trace = 1
-" >> /etc/php/7.1/mods-available/xdebug.ini
+' >> /etc/php/7.1/mods-available/xdebug.ini
+eof
 
+sudo -s <<eof
 echo '
 ;;;;;;;;;;;;;;;;;;;;
 ;      xdebug      ;
@@ -152,7 +155,9 @@ zend_extension="/usr/lib/php/20160303/xdebug.so"
 
 xdebug.remote_enable = On
 ' >> /etc/php/7.1/apache2/php.ini
+eof
 
+sudo -s <<eof
 echo '
 ;;;;;;;;;;;;;;;;;;;;
 ;      xdebug      ;
@@ -161,6 +166,7 @@ zend_extension="/usr/lib/php/20160303/xdebug.so"
 
 xdebug.remote_enable = On
 ' >> /etc/php/7.1/cli/php.ini
+eof
 
 sudo service apache2 restart
 
@@ -204,7 +210,7 @@ echo "
 #
 # PHP-CS-FIXER
 #
-alias php-cs-fixer='$HOME/.config/composer/vendor/bin/php-cs-fixer'" >> ~/.bashrc
+alias php-cs-fixer='$HOME/.composer/vendor/bin/php-cs-fixer'" >> ~/.bashrc
 source ~/.bashrc
 
 #
@@ -223,8 +229,8 @@ echo "
 #
 # PHP code sniffer
 #
-alias phpcs='$HOME/.config/composer/vendor/bin/phpcs'
-alias phpcbf='$HOME/.config/composer/vendor/bin/phpcbf'" >> ~/.bashrc
+alias phpcs='$HOME/.composer/vendor/bin/phpcs'
+alias phpcbf='$HOME/.composer/vendor/bin/phpcbf'" >> ~/.bashrc
 source ~/.bashrc
 
 #
