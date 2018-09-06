@@ -88,6 +88,12 @@ sudo apt-get install -y apache2
 a2enmod rewrite
 sudo service apache2 restart
 
+# Si erreur 'Failed to enable APR_TCP_DEFER_ACCEPT'
+# sudo -s <<eof
+#    echo '
+#    AcceptFilter http none' >> /etc/apache2/apache2.conf
+#    eof 
+
 #
 # Installation MySQL
 #
@@ -377,7 +383,6 @@ printf "${NORMAL}"
 
 sudo apt-get install -y samba
 
-#Add to end of config file
 #Add to end of config file
 sudo cp /etc/samba/smb.conf $HOME/smb.conf
 echo "
