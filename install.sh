@@ -257,7 +257,8 @@ echo "
 #
 # PHP Mess Detector
 #
-alias phpmd='/usr/local/bin/phpmd.phar'" >> ~/.bashrc
+alias phpmd='/usr/local/bin/phpmd.phar'
+alias phpmd-src='/usr/local/bin/phpmd.phar src html codesize.xml --reportfile phpmd.html'" >> ~/.bashrc
 source ~/.bashrc
 
 #
