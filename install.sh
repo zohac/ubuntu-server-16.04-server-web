@@ -1,7 +1,8 @@
 #!/bin/bash
 # Version 0.1
 
-MY_HOSTNAME="test"
+MY_HOSTNAME='test'
+APACHE_LOG_DIR='${APACHE_LOG_DIR}'
 
 # Use colors, but only if connected to a terminal, and that terminal
 # supports them.
@@ -355,8 +356,8 @@ echo "
     # modules, e.g.
     #LogLevel info ssl:warn
 
-    ErrorLog ${APACHE_LOG_DIR}/error.log
-    CustomLog ${APACHE_LOG_DIR}/access.log combined
+    ErrorLog $APACHE_LOG_DIR/error.log
+    CustomLog $APACHE_LOG_DIR/access.log combined
 
 </VirtualHost>
 
