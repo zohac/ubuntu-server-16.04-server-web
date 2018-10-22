@@ -6,9 +6,17 @@ APACHE_LOG_DIR='${APACHE_LOG_DIR}'
 
 # Use colors, but only if connected to a terminal, and that terminal
 # supports them.
-if which tput >/dev/null 2>&1; then
+if tput -v >/dev/null 2>&1; then
     ncolors=$(tput colors)
 fi
+
+RED=""
+GREEN=""
+YELLOW=""
+BLUE=""
+BOLD=""
+NORMAL=""
+    
 if [ -t 1 ] && [ -n "$ncolors" ] && [ "$ncolors" -ge 8 ]; then
     RED="$(tput setaf 1)"
     GREEN="$(tput setaf 2)"
@@ -16,38 +24,31 @@ if [ -t 1 ] && [ -n "$ncolors" ] && [ "$ncolors" -ge 8 ]; then
     BLUE="$(tput setaf 4)"
     BOLD="$(tput bold)"
     NORMAL="$(tput sgr0)"
-else
-    RED=""
-    GREEN=""
-    YELLOW=""
-    BLUE=""
-    BOLD=""
-    NORMAL=""
 fi
 
-printf "${GREEN}"
-echo ' _       __     __                        '
-echo '| |     / /__  / /________  ____ ___  ___ '
-echo '| | /| / / _ \/ / ___/ __ \/ __ `__ \/ _ \'
-echo '| |/ |/ /  __/ / /__/ /_/ / / / / / /  __/'
-echo '|__/|__/\___/_/\___/\____/_/ /_/ /_/\___/ '
+printf "%s" "${GREEN}"
+echo '  _       __     __                         '
+echo ' | |     / /__  / /________  ____ ___  ___  '
+echo ' | | /| / / _ \/ / ___/ __ \/ __ `__ \/ _ \ '
+echo ' | |/ |/ /  __/ / /__/ /_/ / / / / / /  __/ '
+echo ' |__/|__/\___/_/\___/\____/_/ /_/ /_/\___/  '
 echo ''
 echo 'Installing Apache2/PHP7.1/MySQL for a development web server on ubuntu server 16.04.'
 echo ''
 echo ''
-printf "${NORMAL}"
+printf "%s" "${NORMAL}"
 
 #
 # Update the server
 #
-printf "${GREEN}"
+printf "%s" "${GREEN}"
 echo ''
 echo '###########################################'
 echo '#             Global update!              #'
 echo '###########################################'
 echo ''
 echo ''
-printf "${NORMAL}"
+printf "%s" "${NORMAL}"
 sudo apt-get -y update
 sudo apt-get -y upgrade
 
@@ -57,33 +58,33 @@ sudo apt-get -y upgrade
 #
 # Installation dependencies
 #
-printf "${GREEN}"
+printf "%s" "${GREEN}"
 echo ''
 echo '###########################################'
 echo '#        dependencies installation        #'
 echo '###########################################'
 echo ''
 echo ''
-printf "${NORMAL}"
+printf "%s" "${NORMAL}"
 sudo apt-get install -y build-essential
 sudo apt-get install -y apt-transport-https
 sudo apt-get install -y zip
 sudo apt-get install -y python-pip
 git clone https://github.com/b-ryan/powerline-shell
-cd powerline-shell
+cd powerline-shell || return
 python setup.py install
 
 #
 # Installation apache2
 #
-printf "${GREEN}"
+printf "%s" "${GREEN}"
 echo ''
 echo '###########################################'
 echo '#         apache2 installation            #'
 echo '###########################################'
 echo ''
 echo ''
-printf "${NORMAL}"
+printf "%s" "${NORMAL}"
 sudo apt-get install -y apache2
 # Ajout du module rewrite
 a2enmod rewrite
@@ -98,27 +99,27 @@ sudo service apache2 restart
 #
 # Installation MySQL
 #
-printf "${GREEN}"
+printf "%s" "${GREEN}"
 echo ''
 echo '###########################################'
 echo '#           MySQL installation            #'
 echo '###########################################'
 echo ''
 echo ''
-printf "${NORMAL}"
+printf "%s" "${NORMAL}"
 sudo apt-get install -y mysql-server
 
 #
 # Installation php7.1
 #
-printf "${GREEN}"
+printf "%s" "${GREEN}"
 echo ''
 echo '###########################################'
 echo '#           php7.1 installation           #'
 echo '###########################################'
 echo ''
 echo ''
-printf "${NORMAL}"
+printf "%s" "${NORMAL}"
 sudo apt-get install -y python-software-properties
 sudo add-apt-repository -y ppa:ondrej/php
 sudo apt-get update -y
@@ -135,14 +136,14 @@ sudo service apache2 restart
 #
 # Installation de xdebug
 #
-printf "${GREEN}"
+printf "%s" "${GREEN}"
 echo ''
 echo '###########################################'
 echo '#           xdebug installation           #'
 echo '###########################################'
 echo ''
 echo ''
-printf "${NORMAL}"
+printf "%s" "${NORMAL}"
 
 sudo pecl install xdebug
 
@@ -159,7 +160,6 @@ echo '
 ;      xdebug      ;
 ;;;;;;;;;;;;;;;;;;;;
 zend_extension="/usr/lib/php/20160303/xdebug.so"
-
 xdebug.remote_enable = On
 ' >> /etc/php/7.1/apache2/php.ini
 eof
@@ -170,7 +170,6 @@ echo '
 ;      xdebug      ;
 ;;;;;;;;;;;;;;;;;;;;
 zend_extension="/usr/lib/php/20160303/xdebug.so"
-
 xdebug.remote_enable = On
 ' >> /etc/php/7.1/cli/php.ini
 eof
@@ -180,77 +179,77 @@ sudo service apache2 restart
 #
 # Composer
 #
-printf "${GREEN}"
+printf "%s" "${GREEN}"
 echo ''
 echo '###########################################'
 echo '#          Composer installation          #'
 echo '###########################################'
 echo ''
 echo ''
-printf "${NORMAL}"
+printf "%s" "${NORMAL}"
 php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
 php -r "if (hash_file('SHA384', 'composer-setup.php') === '544e09ee996cdf60ece3804abc52599c22b1f40f4323403c44d44fdfdd586475ca9813a858088ffbc1f233e9b180f061') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
 sudo php composer-setup.php --install-dir=/usr/local/bin
 php -r "unlink('composer-setup.php');"
-sudo chown $USER:$USER /usr/local/bin/composer.phar
-sudo chown -R $USER:$USER .composer
+sudo chown "$USER":"$USER" /usr/local/bin/composer.phar
+sudo chown -R "$USER":"$USER" .composer
 echo "
 #
 # Composer
 #
-alias composer='/usr/local/bin/composer.phar'" >> ~/.bashrc
-source ~/.bashrc
+alias composer='/usr/local/bin/composer.phar'" >> "$HOME"/.bashrc
+source "$HOME"/.bashrc
 
 #
 # PHP-CS-FIXER
 #
-printf "${GREEN}"
+printf "%s" "${GREEN}"
 echo ''
 echo '###########################################'
 echo '#         PHP-CS-FIXER installation       #'
 echo '###########################################'
 echo ''
 echo ''
-printf "${NORMAL}"
+printf "%s" "${NORMAL}"
 composer global require friendsofphp/php-cs-fixer
 echo "
 #
 # PHP-CS-FIXER
 #
-alias php-cs-fixer='$HOME/.composer/vendor/bin/php-cs-fixer'" >> ~/.bashrc
-source ~/.bashrc
+alias php-cs-fixer='$HOME/.composer/vendor/bin/php-cs-fixer'" >> "$HOME"/.bashrc
+source "$HOME"/.bashrc
 
 #
 # PHP code sniffer
 #
-printf "${GREEN}"
+printf "%s" "${GREEN}"
 echo ''
 echo '###########################################'
 echo '#      PHP code sniffer installation      #'
 echo '###########################################'
 echo ''
 echo ''
-printf "${NORMAL}"
+printf "%s" "${NORMAL}"
 composer global require "squizlabs/php_codesniffer=*"
 echo "
 #
 # PHP code sniffer
 #
 alias phpcs='$HOME/.composer/vendor/bin/phpcs'
-alias phpcbf='$HOME/.composer/vendor/bin/phpcbf'" >> ~/.bashrc
-source ~/.bashrc
+alias phpcbf='$HOME/.composer/vendor/bin/phpcbf'" >> "$HOME"/.bashrc
+source "$HOME"/.bashrc
 
 #
 # PHP Mess Detector
 #
-printf "${GREEN}"
+printf "%s" "${GREEN}"
 echo ''
 echo '###########################################'
 echo '#     PHP Mess Detector installation      #'
 echo '###########################################'
 echo ''
 echo ''
-printf "${NORMAL}"
+printf "%s" "${NORMAL}"
 wget -c http://static.phpmd.org/php/latest/phpmd.phar
 chmod u+x phpmd.phar
 sudo mv phpmd.phar /usr/local/bin/phpmd.phar
@@ -259,13 +258,13 @@ echo "
 # PHP Mess Detector
 #
 alias phpmd='/usr/local/bin/phpmd.phar'
-alias phpmd-src='/usr/local/bin/phpmd.phar src html codesize.xml --reportfile phpmd.html'" >> ~/.bashrc
-source ~/.bashrc
+alias phpmd-src='/usr/local/bin/phpmd.phar src html codesize.xml --reportfile phpmd.html'" >> "$HOME"/.bashrc
+source "$HOME"/.bashrc
 
 #
 # PHP Copy/Paste Detector (PHPCPD)
 #
-printf "${GREEN}"
+printf "%s" "${GREEN}"
 echo ''
 echo '###########################################'
 echo '#         PHP Copy/Paste Detector         #'
@@ -273,7 +272,7 @@ echo '#               installation              #'
 echo '###########################################'
 echo ''
 echo ''
-printf "${NORMAL}"
+printf "%s" "${NORMAL}"
 wget https://phar.phpunit.de/phpcpd.phar
 chmod +x phpcpd.phar
 sudo mv phpcpd.phar /usr/local/bin/phpcpd
@@ -281,8 +280,8 @@ echo "
 #
 # PHP Copy/Paste Detector  
 #
-alias phpcpd='/usr/local/bin/phpcpd'" >> ~/.bashrc
-source ~/.bashrc
+alias phpcpd='/usr/local/bin/phpcpd'" >> "$HOME"/.bashrc
+source "$HOME"/.bashrc
 
 # example of use:
 #
@@ -294,14 +293,14 @@ source ~/.bashrc
 #
 # Installation postfix
 #
-#printf "${GREEN}"
+#printf "%s" "${GREEN}"
 #echo ''
 #echo '###########################################'
 #echo '#           Installation postfix          #'
 #echo '###########################################'
 #echo ''
 #echo ''
-#printf "${NORMAL}"
+#printf "%s" "${NORMAL}"
 #sudo apt-get -y install postfix
 #sudo apt-get install -y mailutils
 # Site internet
@@ -313,26 +312,25 @@ source ~/.bashrc
 #
 # Setup server
 #
-printf "${GREEN}"
+printf "%s" "${GREEN}"
 echo ''
 echo '###########################################'
 echo '#               Setup server              #'
 echo '###########################################'
 echo ''
 echo ''
-printf "${NORMAL}"
+printf "%s" "${NORMAL}"
 
 if [ ! -d "$HOME/www" ]; then
-  mkdir $HOME/www
+  mkdir "$HOME"/www
 fi
 
-sudo chown -R $USER:www-data $HOME/www
+sudo chown -R "$USER":www-data "$HOME"/www
 
 sudo mv /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-available/000-default.conf.old
-touch $HOME/000-default.conf
+touch "$HOME"/000-default.conf
 echo "
 <VirtualHost *:80>
-
     # The ServerName directive sets the request scheme, hostname and port that
     # the server uses to identify itself. This is used when creating
     # redirection URLs. In the context of virtual hosts, the ServerName
@@ -341,7 +339,6 @@ echo "
     # value is not decisive as it is used as a last resort host regardless.
     # However, you must set it for any further virtual host explicitly.
     #ServerName www.example.com
-
     ServerAdmin webmaster@localhost
     DocumentRoot $HOME/www
     <Directory $HOME/www/>
@@ -349,22 +346,18 @@ echo "
             AllowOverride All
             Require all granted
     </Directory>
-
     # Available loglevels: trace8, ..., trace1, debug, info, notice, warn,
     # error, crit, alert, emerg.
     # It is also possible to configure the loglevel for particular
     # modules, e.g.
     #LogLevel info ssl:warn
-
     ErrorLog $APACHE_LOG_DIR/error.log
     CustomLog $APACHE_LOG_DIR/access.log combined
-
 </VirtualHost>
+vim: syntax=apache ts=4 sw=4 sts=4 sr noet"  >>  "$HOME"/000-default.conf
+sed -i "s/vim:/# vim:/g" "$HOME"/000-default.conf
 
-vim: syntax=apache ts=4 sw=4 sts=4 sr noet"  >>  $HOME/000-default.conf
-sed -i "s/vim:/# vim:/g" $HOME/000-default.conf
-
-sudo mv  $HOME/000-default.conf /etc/apache2/sites-available/000-default.conf
+sudo mv  "$HOME"/000-default.conf /etc/apache2/sites-available/000-default.conf
 
 sudo apache2ctl configtest
 sudo service apache2 reload
@@ -372,21 +365,21 @@ sudo service apache2 reload
 #
 # Installation de samba
 #
-printf "${GREEN}"
+printf "%s" "${GREEN}"
 echo ''
 echo '###########################################'
 echo '#                  SAMBA                  #'
 echo '###########################################'
 echo ''
 echo ''
-printf "${NORMAL}"
+printf "%s" "${NORMAL}"
 
 #!/bin/bash
 
 sudo apt-get install -y samba
 
 #Add to end of config file
-sudo cp /etc/samba/smb.conf $HOME/smb.conf
+sudo cp /etc/samba/smb.conf "$HOME"/smb.conf
 echo "
 [Share]
 comment = Share
@@ -395,15 +388,15 @@ writeable = yes
 guest ok = yes
 create mask = 0644
 directory mask = 0755
-force user = $USER" >> $HOME/smb.conf
+force user = $USER" >> "$HOME"/smb.conf
 
-sudo mv $HOME/smb.conf /etc/samba/smb.conf
+sudo mv "$HOME"/smb.conf /etc/samba/smb.conf
 
-if [ ! -z ${MY_HOSTNAME+x} ]; then
-    touch $HOME/hostname
-    echo "$MY_HOSTNAME" >> $HOME/hostname
+if [ -n "${MY_HOSTNAME+x}" ]; then
+    touch "$HOME"/hostname
+    echo "$MY_HOSTNAME" >> "$HOME"/hostname
 
-    sudo mv $HOME/hostname /etc/hostname
+    sudo mv "$HOME"/hostname /etc/hostname
 fi
 
 sudo service smbd restart
@@ -411,14 +404,14 @@ sudo service smbd restart
 #
 # Installation of Blackfire
 #
-printf "${GREEN}"
+printf "%s" "${GREEN}"
 echo ''
 echo '###########################################'
 echo '#         BlackFire Installation          #'
 echo '###########################################'
 echo ''
 echo ''
-printf "${NORMAL}"
+printf "%s" "${NORMAL}"
 wget -q -O - https://packagecloud.io/gpg.key | sudo apt-key add -
 echo "deb http://packages.blackfire.io/debian any main" | sudo tee /etc/apt/sources.list.d/blackfire.list
 sudo apt-get update -y
@@ -442,19 +435,19 @@ sudo apt-get install -y blackfire-php
 #
 # Shell custom
 #
-printf "${GREEN}"
+printf "%s" "${GREEN}"
 echo ''
 echo '###########################################'
 echo '#            zsh installation             #'
 echo '###########################################'
 echo ''
 echo ''
-printf "${NORMAL}"
+printf "%s" "${NORMAL}"
 sudo apt-get install -y fonts-powerline
 sudo apt-get install -y zsh
-git clone https://github.com/robbyrussell/oh-my-zsh.git  ~/.oh-my-zsh
-cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
-sed -i 's/ZSH_THEME="robbyrussell"/ZSH_THEME="agnoster"/g' ~/.zshrc
+git clone https://github.com/robbyrussell/oh-my-zsh.git  "$HOME"/.oh-my-zsh
+cp "$HOME"/.oh-my-zsh/templates/zshrc.zsh-template "$HOME"/.zshrc
+sed -i 's/ZSH_THEME="robbyrussell"/ZSH_THEME="agnoster"/g' "$HOME"/.zshrc
 chsh -s /bin/zsh
 
 echo "
@@ -462,69 +455,64 @@ echo "
 # Composer  
 #
 alias composer='/usr/local/bin/composer.phar'
-
 #
 # PHP-CS-FIXER
 #
 alias php-cs-fixer='$HOME/.config/composer/vendor/bin/php-cs-fixer'
-
 #
 # PHP code sniffer
 #
 alias phpcs='$HOME/.config/composer/vendor/bin/phpcs'
 alias phpcbf='$HOME/.config/composer/vendor/bin/phpcbf'
-
 #
 # PHP Mess Detector
 #
 alias phpmd='/usr/local/bin/phpmd.phar'
-
 #
 # PHP Copy/Paste Detector  
 #
-alias phpcpd='/usr/local/bin/phpcpd'" >> ~/.zshrc
+alias phpcpd='/usr/local/bin/phpcpd'" >> "$HOME"/.zshrc
 
-source ~/.zshrc
+source "$HOME"/.zshrc
 
-sudo chmod -R 755 ~/.oh-my-zsh
+sudo chmod -R 755 "$HOME"/.oh-my-zsh
 
 #
 # Cleaning after installation
 #
-printf "${GREEN}"
+printf "%s" "${GREEN}"
 echo ''
 echo '###########################################'
 echo '#                Cleaning                 #'
 echo '###########################################'
 echo ''
 echo ''
-printf "${NORMAL}"
+printf "%s" "${NORMAL}"
 sudo apt-get -y update
 sudo apt-get -y upgrade
 sudo apt-get -y autoremove --purge
 sudo apt-get -y autoclean
 
-if [ -d "raspbian---installation-serveur" ]; then
-  sudo rm -r raspbian---installation-serveur
+if [ -d "ubuntu-server-16.04-server-web" ]; then
+  sudo rm -r ubuntu-server-16.04-server-web
 fi
 
-printf "${GREEN}" echo ''
-echo ' _____         __                    '
-echo '/__  /  ____  / /_  ____ ______      '
-echo '  / /  / __ \/ __ \/ __ `/ ___/      '
-echo ' / /__/ /_/ / / / / /_/ / /__        '
-echo '/____/\____/_/ /_/\__,_/\___/  web server installation script...is now installed!'
+printf "%s" "${GREEN}" echo ''
+echo '  _____         __                    '
+echo ' /__  /  ____  / /_  ____ ______      '
+echo '   / /  / __ \/ __ \/ __ `/ ___/      '
+echo '  / /__/ /_/ / / / / /_/ / /__        '
+echo ' /____/\____/_/ /_/\__,_/\___/  web server installation script...is now installed!'
 echo ''
 echo ''
-printf "${NORMAL}"
+printf "%s" "${NORMAL}"
 
 while :
 do
 
-    echo "You should restart [Y/n] ?"
-    read REP
+    read -p "You should restart [Y/n] ?" RESPONSE
 
-    case $REP in
+    case $RESPONSE in
         N|n)
             echo "Remember to restart !"
             break
