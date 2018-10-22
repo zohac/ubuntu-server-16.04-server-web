@@ -16,7 +16,7 @@ YELLOW=""
 BLUE=""
 BOLD=""
 NORMAL=""
-    
+
 if [ -t 1 ] && [ -n "$ncolors" ] && [ "$ncolors" -ge 8 ]; then
     RED="$(tput setaf 1)"
     GREEN="$(tput setaf 2)"
@@ -94,7 +94,7 @@ sudo service apache2 restart
 # sudo -s <<eof
 #    echo '
 #    AcceptFilter http none' >> /etc/apache2/apache2.conf
-#    eof 
+#    eof
 
 #
 # Installation MySQL
@@ -278,7 +278,7 @@ chmod +x phpcpd.phar
 sudo mv phpcpd.phar /usr/local/bin/phpcpd
 echo "
 #
-# PHP Copy/Paste Detector  
+# PHP Copy/Paste Detector
 #
 alias phpcpd='/usr/local/bin/phpcpd'" >> "$HOME"/.bashrc
 source "$HOME"/.bashrc
@@ -418,7 +418,7 @@ sudo apt-get update -y
 sudo apt-get install -y blackfire-agent
 # If is the first install :
 # sudo blackfire-agent -register
-# 
+#
 # ClientID
 # ClientToken
 #
@@ -452,7 +452,7 @@ chsh -s /bin/zsh
 
 echo "
 #
-# Composer  
+# Composer
 #
 alias composer='/usr/local/bin/composer.phar'
 #
@@ -469,7 +469,7 @@ alias phpcbf='$HOME/.config/composer/vendor/bin/phpcbf'
 #
 alias phpmd='/usr/local/bin/phpmd.phar'
 #
-# PHP Copy/Paste Detector  
+# PHP Copy/Paste Detector
 #
 alias phpcpd='/usr/local/bin/phpcpd'" >> "$HOME"/.zshrc
 
