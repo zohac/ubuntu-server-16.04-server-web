@@ -40,97 +40,27 @@ printf "${NORMAL}"
 #
 # Update the server
 #
-printf "${GREEN}"
-echo ''
-echo '###########################################'
-echo '#             Global update!              #'
-echo '###########################################'
-echo ''
-echo ''
-printf "${NORMAL}"
-sudo apt-get -y update
-sudo apt-get -y upgrade
-
-# Liste des paquets pouvant-être mis à jour
-# apt list --upgradable
+source update.sh
 
 #
 # Installation dependencies
 #
-printf "${GREEN}"
-echo ''
-echo '###########################################'
-echo '#        dependencies installation        #'
-echo '###########################################'
-echo ''
-echo ''
-printf "${NORMAL}"
-sudo apt-get install -y build-essential
-sudo apt-get install -y apt-transport-https
-sudo apt-get install -y zip
-sudo apt-get install -y python-pip
-git clone https://github.com/b-ryan/powerline-shell
-cd powerline-shell
-python setup.py install
+source dependencies_installation.sh
 
 #
 # Installation apache2
 #
-printf "${GREEN}"
-echo ''
-echo '###########################################'
-echo '#         apache2 installation            #'
-echo '###########################################'
-echo ''
-echo ''
-printf "${NORMAL}"
-sudo apt-get install -y apache2
-# Ajout du module rewrite
-a2enmod rewrite
-sudo service apache2 restart
-
-# Si erreur 'Failed to enable APR_TCP_DEFER_ACCEPT'
-# sudo -s <<eof
-#    echo '
-#    AcceptFilter http none' >> /etc/apache2/apache2.conf
-#    eof 
+source apache2_installation.sh
 
 #
 # Installation MySQL
 #
-printf "${GREEN}"
-echo ''
-echo '###########################################'
-echo '#           MySQL installation            #'
-echo '###########################################'
-echo ''
-echo ''
-printf "${NORMAL}"
-sudo apt-get install -y mysql-server
+source mysql_installation.sh
 
 #
 # Installation php7.1
 #
-printf "${GREEN}"
-echo ''
-echo '###########################################'
-echo '#           php7.1 installation           #'
-echo '###########################################'
-echo ''
-echo ''
-printf "${NORMAL}"
-sudo apt-get install -y python-software-properties
-sudo add-apt-repository -y ppa:ondrej/php
-sudo apt-get update -y
-# apt-cache pkgnames | grep php7.1
-sudo apt-get install -y php7.1 php7.1-cli php7.1-common libapache2-mod-php7.1 php7.1-mysql php7.1-fpm php7.1-curl php7.1-gd php7.1-bz2 php7.1-mcrypt php7.1-json php7.1-tidy php7.1-mbstring php7.1-xml php7.1-dev php7.1-soap php-redis php-memcached php7.1-zip php7.1-apcu php7.1-sqlite3
-sudo a2enmod proxy_fcgi setenvif
-sudo a2enconf php7.1-fpm
-
-# Configuration date
-sudo sed -i "s/;date.timezone =/date.timezone = Europe\/Paris/g" /etc/php/7.1/apache2/php.ini
-
-sudo service apache2 restart
+source php7.1_installation.sh
 
 #
 # Installation de xdebug
@@ -279,7 +209,7 @@ chmod +x phpcpd.phar
 sudo mv phpcpd.phar /usr/local/bin/phpcpd
 echo "
 #
-# PHP Copy/Paste Detector  
+# PHP Copy/Paste Detector
 #
 alias phpcpd='/usr/local/bin/phpcpd'" >> ~/.bashrc
 source ~/.bashrc
@@ -425,7 +355,7 @@ sudo apt-get update -y
 sudo apt-get install -y blackfire-agent
 # If is the first install :
 # sudo blackfire-agent -register
-# 
+#
 # ClientID
 # ClientToken
 #
@@ -459,7 +389,7 @@ chsh -s /bin/zsh
 
 echo "
 #
-# Composer  
+# Composer
 #
 alias composer='/usr/local/bin/composer.phar'
 
@@ -480,7 +410,7 @@ alias phpcbf='$HOME/.config/composer/vendor/bin/phpcbf'
 alias phpmd='/usr/local/bin/phpmd.phar'
 
 #
-# PHP Copy/Paste Detector  
+# PHP Copy/Paste Detector
 #
 alias phpcpd='/usr/local/bin/phpcpd'" >> ~/.zshrc
 
