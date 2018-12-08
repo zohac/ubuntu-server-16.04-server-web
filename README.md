@@ -1,5 +1,7 @@
 # Installing an Apache2/PHP7.1 web server
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/e6db103e78474d1db388af288046a8fe)](https://app.codacy.com/app/zohac/ubuntu-server-16.04-server-web?utm_source=github.com&utm_medium=referral&utm_content=zohac/ubuntu-server-16.04-server-web&utm_campaign=Badge_Grade_Dashboard)
+
 Installing Apache2/PHP7.1/MySQL for a development web server on a ubuntu server 16.04.
 
 Script tested on linux distribution [Ubuntu 16.04.5 LTS](https://www.ubuntu.com/download/alternative-downloads).
