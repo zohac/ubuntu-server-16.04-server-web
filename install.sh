@@ -2,6 +2,7 @@
 # Version 0.1
 
 MY_HOSTNAME='test'
+MYSQL_PASSWORD='root'
 APACHE_LOG_DIR='${APACHE_LOG_DIR}'
 
 # Use colors, but only if connected to a terminal, and that terminal
@@ -107,7 +108,11 @@ echo '###########################################'
 echo ''
 echo ''
 printf "%s" "${NORMAL}"
-sudo apt-get install -y mysql-server
+CONF="mysql-server mysql-server/root_password password ${MYSQL_PASSWORD}"
+sudo debconf-set-selections <<< ${CONF}
+CONF="mysql-server mysql-server/root_password_again password ${MYSQL_PASSWORD}"
+sudo debconf-set-selections <<< ${CONF}
+sudo apt-get -y install mysql-server
 
 #
 # Installation php7.1
@@ -497,7 +502,8 @@ if [ -d "ubuntu-server-16.04-server-web" ]; then
   sudo rm -r ubuntu-server-16.04-server-web
 fi
 
-printf "%s" "${GREEN}" echo ''
+printf "%s" "${GREEN}"
+echo ''
 echo '  _____         __                    '
 echo ' /__  /  ____  / /_  ____ ______      '
 echo '   / /  / __ \/ __ \/ __ `/ ___/      '
