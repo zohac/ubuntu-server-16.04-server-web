@@ -379,23 +379,19 @@ echo ''
 echo ''
 printf "%s" "${NORMAL}"
 
-#!/bin/bash
-
 sudo apt-get install -y samba
 
-#Add to end of config file
-sudo cp /etc/samba/smb.conf "$HOME"/smb.conf
+sudo -s <<eof
 echo "
-[Share]
-comment = Share
+[share]
+comment = share
 path = $HOME
 writeable = yes
 guest ok = yes
 create mask = 0644
 directory mask = 0755
-force user = $USER" >> "$HOME"/smb.conf
-
-sudo mv "$HOME"/smb.conf /etc/samba/smb.conf
+force user = $USER" >> /etc/samba/smb.conf
+eof
 
 if [ -n "${MY_HOSTNAME+x}" ]; then
     touch "$HOME"/hostname
