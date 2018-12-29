@@ -35,5 +35,3 @@ sudo apt-get install -y blackfire-agent
 # ClientToken
 
 sudo apt-get install -y blackfire-php
-
-exit 0;

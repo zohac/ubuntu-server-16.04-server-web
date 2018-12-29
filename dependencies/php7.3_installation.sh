@@ -50,5 +50,3 @@ echo"extension=apcu.so" | tee -a /etc/php/7.3/mods-available/cache.ini
 sudo sed -i "s/;date.timezone =/date.timezone = Europe\/Paris/g" /etc/php/7.3/apache2/php.ini
 
 sudo service apache2 restart
-
-exit 0;

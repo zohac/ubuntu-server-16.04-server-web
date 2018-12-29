@@ -33,5 +33,3 @@ source "$HOME"/.bashrc
 # phpcs
 # phpcbf
 # phpmd src html codesize,unusedcode,naming --reportfile phpmd.html --suffixes php,phtml
-
-exit 0;
