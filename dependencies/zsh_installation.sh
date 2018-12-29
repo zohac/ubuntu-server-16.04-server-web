@@ -15,9 +15,10 @@ echo -e "$NORMAL"
 
 sudo apt-get install -y fonts-powerline
 sudo apt-get install -y zsh
-git clone https://github.com/robbyrussell/oh-my-zsh.git  "$HOME"/.oh-my-zsh
-rm "$HOME"/.zshrc
-cp "$HOME"/.oh-my-zsh/templates/zshrc.zsh-template "$HOME"/.zshrc
+sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
+#git clone https://github.com/robbyrussell/oh-my-zsh.git  "$HOME"/.oh-my-zsh
+#rm "$HOME"/.zshrc
+#cp "$HOME"/.oh-my-zsh/templates/zshrc.zsh-template "$HOME"/.zshrc
 sed -i 's/ZSH_THEME="robbyrussell"/ZSH_THEME="agnoster"/g' "$HOME"/.zshrc
 chsh -s $(which zsh)
 
