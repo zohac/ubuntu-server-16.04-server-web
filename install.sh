@@ -1,8 +1,6 @@
 #!/bin/bash
 # Version 0.1
 
-APACHE_LOG_DIR='${APACHE_LOG_DIR}'
-
 RED="\e[31m"
 GREEN="\e[32m"
 YELLOW="\e[33m"
@@ -76,11 +74,6 @@ source dependencies/php-mess-detector_installation.sh
 source dependencies/copy-paste-detector_installation.sh
 
 #
-# Setup server
-#
-source dependencies/setup-server_installation.sh
-
-#
 # Installation de samba
 #
 source dependencies/samba_installation.sh
@@ -100,7 +93,7 @@ source dependencies/zsh_installation.sh
 #
 source dependencies/cleaning.sh
 
-printf "%s" "${GREEN}" echo ''
+echo -e "$GREEN"
 echo ' _____         __                    '
 echo '/__  /  ____  / /_  ____ ______      '
 echo '  / /  / __ \/ __ \/ __ `/ ___/      '
@@ -108,7 +101,7 @@ echo ' / /__/ /_/ / / / / /_/ / /__        '
 echo '/____/\____/_/ /_/\__,_/\___/  web server installation script...is now installed!'
 echo ''
 echo ''
-printf "%s" "${NORMAL}"
+echo -e "$NORMAL"
 
 while :
 do
