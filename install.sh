@@ -36,82 +36,97 @@ echo ''
 echo ''
 echo -e "$NORMAL"
 
-EXIT_STATUS=0
-
 #
 # Update the server
 #
-source dependencies/update.sh || EXIT_STATUS=$?
+source dependencies/update.sh $ARTIFACT_VERSION
+exit_state_1=$?
 
 #
 # Installation dependencies
 #
-source dependencies/dependencies_installation.sh || EXIT_STATUS=$?
+source dependencies/dependencies_installation.sh $ARTIFACT_VERSION
+exit_state_2=$?
 
 #
 # Installation apache2
 #
-source dependencies/apache2_installation.sh || EXIT_STATUS=$?
+source dependencies/apache2_installation.sh $ARTIFACT_VERSION
+exit_state_3=$?
 
 #
 # Installation MySQL
 #
-source dependencies/mysql_installation.sh || EXIT_STATUS=$?
+source dependencies/mysql_installation.sh $ARTIFACT_VERSION
+exit_state_4=$?
 
 #
 # Installation php7.1
 #
-source dependencies/php7.3_installation.sh || EXIT_STATUS=$?
+source dependencies/php7.3_installation.sh $ARTIFACT_VERSION
+exit_state_5=$?
 
 #
 # Installation de xdebug
 #
-source dependencies/xdebug_installation.sh || EXIT_STATUS=$?
+source dependencies/xdebug_installation.sh $ARTIFACT_VERSION
+exit_state_6=$?
 
 #
 # Composer
 #
-source dependencies/composer_installation.sh || EXIT_STATUS=$?
+source dependencies/composer_installation.sh $ARTIFACT_VERSION
+exit_state_7=$?
 
 #
 # PHP-CS-FIXER
 #
-source dependencies/php-cs-fixer_installation.sh || EXIT_STATUS=$?
+source dependencies/php-cs-fixer_installation.sh $ARTIFACT_VERSION
+exit_state_8=$?
 
 #
 # PHP code sniffer
 #
-source dependencies/php-code-sniffer_installation.sh || EXIT_STATUS=$?
+source dependencies/php-code-sniffer_installation.sh $ARTIFACT_VERSION
+exit_state_9=$?
 
 #
 # PHP Mess Detector
 #
-source dependencies/php-mess-detector_installation.sh || EXIT_STATUS=$?
+source dependencies/php-mess-detector_installation.sh $ARTIFACT_VERSION
+exit_state_10=$?
 
 #
 # PHP Copy/Paste Detector (PHPCPD)
 #
-source dependencies/copy-paste-detector_installation.sh || EXIT_STATUS=$?
+source dependencies/copy-paste-detector_installation.sh $ARTIFACT_VERSION
+exit_state_11=$?
 
 #
 # Installation de samba
 #
-source dependencies/samba_installation.sh || EXIT_STATUS=$?
+source dependencies/samba_installation.sh $ARTIFACT_VERSION
+exit_state_12=$?
 
 #
 # Installation of Blackfire
 #
-source dependencies/blackFire_installation.sh || EXIT_STATUS=$?
+source dependencies/blackFire_installation.sh $ARTIFACT_VERSION
+exit_state_13=$?
 
 #
 # Shell custom
 #
-source dependencies/zsh_installation.sh || EXIT_STATUS=$?
+source dependencies/zsh_installation.sh $ARTIFACT_VERSION
+exit_state_14=$?
 
 #
 # Cleaning after installation
 #
-source dependencies/cleaning.sh || EXIT_STATUS=$?
+source dependencies/cleaning.sh $ARTIFACT_VERSION
+exit_state_15=$?
+
+EXIT_STATUS=$[ $exit_state_1 &&  $exit_state_2 && $exit_state_3 &&  $exit_state_4 && $exit_state_5 &&  $exit_state_6 && $exit_state_7 &&  $exit_state_8 && $exit_state_9 &&  $exit_state_10 && $exit_state_11 &&  $exit_state_12 && $exit_state_13 &&  $exit_state_14 && $exit_state_15]
 
 echo -e "$GREEN"
 echo ' _____         __                    '
