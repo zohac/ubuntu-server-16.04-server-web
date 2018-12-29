@@ -4,16 +4,17 @@
 #
 # Installation apache2
 #
-printf "${GREEN}"
+echo -e "$GREEN"
 echo ''
 echo '###########################################'
 echo '#         apache2 installation            #'
 echo '###########################################'
 echo ''
 echo ''
-printf "${NORMAL}"
+echo -e "$NORMAL"
+
 sudo apt-get install -y apache2
-# Ajout du module rewrite
+# Add rewrite module
 a2enmod rewrite
 sudo service apache2 restart
 

@@ -1,14 +1,14 @@
-# Installing an Apache2/PHP7.1 web server
+# Installing an Apache2/PHP7.3 web server
 
-Installing Apache2/PHP7.1/MySQL for a development web server on a ubuntu server 16.04.
+Installing Apache2/PHP7.3/MySQL for a development web server on a ubuntu server 18.04.
 
-Script tested on linux distribution [Ubuntu 16.04.5 LTS](https://www.ubuntu.com/download/alternative-downloads).
+Script tested on linux distribution [Ubuntu 18.04 LTS](https://www.ubuntu.com/download/alternative-downloads).
 
 The script installs the following components:
 
 * Apache2
 * MySQL
-* PHP7.1
+* PHP7.3
 * xdebug
 * Composer
 * PHP-CS-FIXER
