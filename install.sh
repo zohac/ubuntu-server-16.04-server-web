@@ -6,6 +6,24 @@ GREEN="\e[32m"
 YELLOW="\e[33m"
 NORMAL="\e[39m"
 
+# Retrieving parameters
+RESPONSE=''
+if [ "$1" ]; then
+
+    case "$1" in
+        Y|y|N|n)
+            RESPONSE="$1"
+        ;;
+        *)
+            echo -e "$YELLOW"
+            echo "Les paramètres autorisés sont Y|y|N|n."
+            echo -e "$NORMAL"
+            exit 0;
+        ;;
+    esac
+
+fi
+
 echo -e "$GREEN"
 echo '  _       __     __                         '
 echo ' | |     / /__  / /________  ____ ___  ___  '
@@ -106,9 +124,11 @@ echo -e "$NORMAL"
 while :
 do
 
-    read -p "You should restart [Y/n] ? " RESPONSE
+    if [ "$RESPONSE" = '' ]; then
+        read -p "You should restart [Y/n] ? " RESPONSE
+    fi
 
-    case $RESPONSE in
+    case "$RESPONSE" in
         N|n)
             echo -e "$YELLOW"
             echo "Remember to restart !"
@@ -116,7 +136,7 @@ do
             break
         ;;
         Y|y)
-            #Redémarrage
+            #Reboot
             sudo reboot
             break
         ;;
@@ -126,6 +146,7 @@ do
             echo -e "$NORMAL"
         ;;
     esac
+
 done
 
 exit 0;
