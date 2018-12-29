@@ -40,94 +40,77 @@ echo -e "$NORMAL"
 #
 # Update the server
 #
-source "$CURRENT_DIR"/dependencies/update.sh $ARTIFACT_VERSION
-exit_state_1=$?
+source "$CURRENT_DIR"/dependencies/update.sh
 
 #
 # Installation dependencies
 #
-source "$CURRENT_DIR"/dependencies/dependencies_installation.sh $ARTIFACT_VERSION
-exit_state_2=$?
+source "$CURRENT_DIR"/dependencies/dependencies_installation.sh
 
 #
 # Installation apache2
 #
-source "$CURRENT_DIR"/dependencies/apache2_installation.sh $ARTIFACT_VERSION
-exit_state_3=$?
+source "$CURRENT_DIR"/dependencies/apache2_installation.sh
 
 #
 # Installation MySQL
 #
-source "$CURRENT_DIR"/dependencies/mysql_installation.sh $ARTIFACT_VERSION
-exit_state_4=$?
+source "$CURRENT_DIR"/dependencies/mysql_installation.sh
 
 #
 # Installation php7.1
 #
-source "$CURRENT_DIR"/dependencies/php7.3_installation.sh $ARTIFACT_VERSION
-exit_state_5=$?
+source "$CURRENT_DIR"/dependencies/php7.3_installation.sh
 
 #
 # Installation de xdebug
 #
-source "$CURRENT_DIR"/dependencies/xdebug_installation.sh $ARTIFACT_VERSION
-exit_state_6=$?
+source "$CURRENT_DIR"/dependencies/xdebug_installation.sh
 
 #
 # Composer
 #
-source "$CURRENT_DIR"/dependencies/composer_installation.sh $ARTIFACT_VERSION
-exit_state_7=$?
+source "$CURRENT_DIR"/dependencies/composer_installation.sh
 
 #
 # PHP-CS-FIXER
 #
-source "$CURRENT_DIR"/dependencies/php-cs-fixer_installation.sh $ARTIFACT_VERSION
-exit_state_8=$?
+source "$CURRENT_DIR"/dependencies/php-cs-fixer_installation.sh
 
 #
 # PHP code sniffer
 #
-source "$CURRENT_DIR"/dependencies/php-code-sniffer_installation.sh $ARTIFACT_VERSION
-exit_state_9=$?
+source "$CURRENT_DIR"/dependencies/php-code-sniffer_installation.sh
 
 #
 # PHP Mess Detector
 #
-source "$CURRENT_DIR"/dependencies/php-mess-detector_installation.sh $ARTIFACT_VERSION
-exit_state_10=$?
+source "$CURRENT_DIR"/dependencies/php-mess-detector_installation.sh
 
 #
 # PHP Copy/Paste Detector (PHPCPD)
 #
-source "$CURRENT_DIR"/dependencies/copy-paste-detector_installation.sh $ARTIFACT_VERSION
-exit_state_11=$?
+source "$CURRENT_DIR"/dependencies/copy-paste-detector_installation.sh
 
 #
 # Installation de samba
 #
-source "$CURRENT_DIR"/dependencies/samba_installation.sh $ARTIFACT_VERSION
-exit_state_12=$?
+source "$CURRENT_DIR"/dependencies/samba_installation.sh
 
 #
 # Installation of Blackfire
 #
-source "$CURRENT_DIR"/dependencies/blackFire_installation.sh $ARTIFACT_VERSION
-exit_state_13=$?
+source "$CURRENT_DIR"/dependencies/blackFire_installation.sh
 
 #
 # Shell custom
 #
-source "$CURRENT_DIR"/dependencies/zsh_installation.sh $ARTIFACT_VERSION
-exit_state_14=$?
+source "$CURRENT_DIR"/dependencies/zsh_installation.sh
 
 #
 # Cleaning after installation
 #
-source "$CURRENT_DIR"/dependencies/cleaning.sh $ARTIFACT_VERSION
-exit_state_15=$?
-
-EXIT_STATUS=$[ $exit_state_1 &&  $exit_state_2 && $exit_state_3 &&  $exit_state_4 && $exit_state_5 &&  $exit_state_6 && $exit_state_7 &&  $exit_state_8 && $exit_state_9 &&  $exit_state_10 && $exit_state_11 &&  $exit_state_12 && $exit_state_13 &&  $exit_state_14 && $exit_state_15]
+source "$CURRENT_DIR"/dependencies/cleaning.sh
 
 echo -e "$GREEN"
 echo ' _____         __                    '
