@@ -15,16 +15,14 @@ echo -e "$NORMAL"
 
 sudo apt-get install -y fonts-powerline
 sudo apt-get install -y zsh
-sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
-#git clone https://github.com/robbyrussell/oh-my-zsh.git  "$HOME"/.oh-my-zsh
-#rm "$HOME"/.zshrc
-#cp "$HOME"/.oh-my-zsh/templates/zshrc.zsh-template "$HOME"/.zshrc
-echo 'Change theme...'
-sed -i 's/ZSH_THEME="robbyrussell"/ZSH_THEME="agnoster"/g' "$HOME"/.zshrc
 echo 'Change auth...'
 sudo sed -i 's/auth       required   pam_shells.so/auth       sufficient   pam_shells.so/g' /etc/pam.d/chsh
 echo 'Refresh auth...'
 sudo /usr/sbin/pam-auth-update
+echo 'Install oh-my-zsh...'
+sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
+echo 'Change theme...'
+sed -i 's/ZSH_THEME="robbyrussell"/ZSH_THEME="agnoster"/g' "$HOME"/.zshrc
 echo 'Change shell...'
 chsh -s $(which zsh)
 echo 'Change auth...'
