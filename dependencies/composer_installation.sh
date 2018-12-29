@@ -32,3 +32,5 @@ echo "
 #
 alias composer='/usr/local/bin/composer.phar'" >> "$HOME"/.bashrc
 source "$HOME"/.bashrc
+
+exit

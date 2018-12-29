@@ -18,3 +18,5 @@ sudo apt-get install -y software-properties-common
 git clone https://github.com/b-ryan/powerline-shell
 cd powerline-shell || return
 python setup.py install
+
+exit

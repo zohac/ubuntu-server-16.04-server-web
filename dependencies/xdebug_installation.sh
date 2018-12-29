@@ -45,3 +45,5 @@ xdebug.remote_enable = On
 eof
 
 sudo service apache2 restart
+
+exit

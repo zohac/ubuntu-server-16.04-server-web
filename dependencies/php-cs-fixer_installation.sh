@@ -21,3 +21,5 @@ echo "
 #
 alias php-cs-fixer='$HOME/.composer/vendor/bin/php-cs-fixer'" >> "$HOME"/.bashrc
 source "$HOME"/.bashrc
+
+exit

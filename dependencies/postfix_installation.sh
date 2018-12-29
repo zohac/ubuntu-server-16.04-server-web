@@ -20,3 +20,5 @@
 # /etc/postfix/main.cf
 # sudo dpkg-reconfigure postfix
 # echo "Cesi est un mail de test" | mail -s "Sujet de test" fenrir0680@gmail.com
+
+#exit

@@ -18,3 +18,5 @@ sudo apt-get -y upgrade
 
 # Liste des paquets pouvant être mis à jour
 # apt list --upgradable
+
+exit
