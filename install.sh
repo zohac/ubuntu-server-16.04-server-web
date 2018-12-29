@@ -150,4 +150,4 @@ do
 
 done
 
-exit $EXIT_STATUS
+exit 0;
