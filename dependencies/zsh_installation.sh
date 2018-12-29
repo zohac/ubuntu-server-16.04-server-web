@@ -16,28 +16,33 @@ echo -e "$NORMAL"
 sudo apt-get install -y fonts-powerline
 sudo apt-get install -y zsh
 git clone https://github.com/robbyrussell/oh-my-zsh.git  "$HOME"/.oh-my-zsh
+rm "$HOME"/.zshrc
 cp "$HOME"/.oh-my-zsh/templates/zshrc.zsh-template "$HOME"/.zshrc
 sed -i 's/ZSH_THEME="robbyrussell"/ZSH_THEME="agnoster"/g' "$HOME"/.zshrc
-chsh -s /bin/zsh
+chsh -s $(which zsh)
 
 echo "
 #
 # Composer
 #
 alias composer='/usr/local/bin/composer.phar'
+
 #
 # PHP-CS-FIXER
 #
 alias php-cs-fixer='$HOME/.config/composer/vendor/bin/php-cs-fixer'
+
 #
 # PHP code sniffer
 #
 alias phpcs='$HOME/.config/composer/vendor/bin/phpcs'
 alias phpcbf='$HOME/.config/composer/vendor/bin/phpcbf'
+
 #
 # PHP Mess Detector
 #
 alias phpmd='/usr/local/bin/phpmd.phar'
+
 #
 # PHP Copy/Paste Detector
 #
