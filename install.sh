@@ -5,51 +5,35 @@ MY_HOSTNAME='test'
 MYSQL_PASSWORD='root'
 APACHE_LOG_DIR='${APACHE_LOG_DIR}'
 
-# Use colors, but only if connected to a terminal, and that terminal
-# supports them.
-if tput -v >/dev/null 2>&1; then
-    ncolors=$(tput colors)
-fi
+RED="\e[31m"
+GREEN="\e[32m"
+YELLOW="\e[33m"
+NORMAL="\e[39m"
 
-RED=""
-GREEN=""
-YELLOW=""
-BLUE=""
-BOLD=""
-NORMAL=""
-
-if [ -t 1 ] && [ -n "$ncolors" ] && [ "$ncolors" -ge 8 ]; then
-    RED="$(tput setaf 1)"
-    GREEN="$(tput setaf 2)"
-    YELLOW="$(tput setaf 3)"
-    BLUE="$(tput setaf 4)"
-    BOLD="$(tput bold)"
-    NORMAL="$(tput sgr0)"
-fi
-
-printf "%s" "${GREEN}"
+echo -e "$GREEN"
 echo '  _       __     __                         '
 echo ' | |     / /__  / /________  ____ ___  ___  '
 echo ' | | /| / / _ \/ / ___/ __ \/ __ `__ \/ _ \ '
 echo ' | |/ |/ /  __/ / /__/ /_/ / / / / / /  __/ '
 echo ' |__/|__/\___/_/\___/\____/_/ /_/ /_/\___/  '
 echo ''
-echo 'Installing Apache2/PHP7.1/MySQL for a development web server on ubuntu server 16.04.'
+echo 'Installing Apache2/PHP7.1/MySQL for a development web server on ubuntu server 18.04.'
 echo ''
 echo ''
-printf "%s" "${NORMAL}"
+echo -e "$NORMAL"
 
 #
 # Update the server
 #
-printf "%s" "${GREEN}"
+echo -e "$GREEN"
 echo ''
 echo '###########################################'
 echo '#             Global update!              #'
 echo '###########################################'
 echo ''
 echo ''
-printf "%s" "${NORMAL}"
+echo -e "$NORMAL"
+
 sudo apt-get -y update
 sudo apt-get -y upgrade
 
@@ -59,18 +43,20 @@ sudo apt-get -y upgrade
 #
 # Installation dependencies
 #
-printf "%s" "${GREEN}"
+echo -e "$GREEN"
 echo ''
 echo '###########################################'
 echo '#        dependencies installation        #'
 echo '###########################################'
 echo ''
 echo ''
-printf "%s" "${NORMAL}"
+echo -e "$NORMAL"
+
 sudo apt-get install -y build-essential
 sudo apt-get install -y apt-transport-https
 sudo apt-get install -y zip
 sudo apt-get install -y python-pip
+sudo apt-get install -y software-properties-common
 git clone https://github.com/b-ryan/powerline-shell
 cd powerline-shell || return
 python setup.py install
@@ -78,16 +64,17 @@ python setup.py install
 #
 # Installation apache2
 #
-printf "%s" "${GREEN}"
+echo -e "$GREEN"
 echo ''
 echo '###########################################'
 echo '#         apache2 installation            #'
 echo '###########################################'
 echo ''
 echo ''
-printf "%s" "${NORMAL}"
+echo -e "$NORMAL"
+
 sudo apt-get install -y apache2
-# Ajout du module rewrite
+# Add rewrite module
 a2enmod rewrite
 sudo service apache2 restart
 
@@ -100,14 +87,15 @@ sudo service apache2 restart
 #
 # Installation MySQL
 #
-printf "%s" "${GREEN}"
+echo -e "$GREEN"
 echo ''
 echo '###########################################'
 echo '#           MySQL installation            #'
 echo '###########################################'
 echo ''
 echo ''
-printf "%s" "${NORMAL}"
+echo -e "$NORMAL"
+
 CONF="mysql-server mysql-server/root_password password ${MYSQL_PASSWORD}"
 sudo debconf-set-selections <<< ${CONF}
 CONF="mysql-server mysql-server/root_password_again password ${MYSQL_PASSWORD}"
@@ -115,40 +103,63 @@ sudo debconf-set-selections <<< ${CONF}
 sudo apt-get -y install mysql-server
 
 #
-# Installation php7.1
+# Installation php7.3
 #
-printf "%s" "${GREEN}"
+echo -e "$GREEN"
 echo ''
 echo '###########################################'
-echo '#           php7.1 installation           #'
+echo '#           php7.3 installation           #'
 echo '###########################################'
 echo ''
 echo ''
-printf "%s" "${NORMAL}"
-sudo apt-get install -y python-software-properties
+echo -e "$NORMAL"
+
 sudo add-apt-repository -y ppa:ondrej/php
 sudo apt-get update -y
-# apt-cache pkgnames | grep php7.1
-sudo apt-get install -y php7.1 php7.1-cli php7.1-common libapache2-mod-php7.1 php7.1-mysql php7.1-fpm php7.1-curl php7.1-gd php7.1-bz2 php7.1-mcrypt php7.1-json php7.1-tidy php7.1-mbstring php7.1-xml php7.1-dev php7.1-soap php-redis php-memcached php7.1-zip php7.1-apcu php7.1-sqlite3
+# apt-cache pkgnames | grep php7.3
+sudo apt-get install -y php7.3
+sudo apt-get install -y php7.3-cli
+sudo apt-get install -y php7.3-common
+sudo apt-get install -y libapache2-mod-php7.3
+sudo apt-get install -y php7.3-mysql
+sudo apt-get install -y php7.3-fpm
+sudo apt-get install -y php7.3-curl
+sudo apt-get install -y php7.3-gd
+sudo apt-get install -y php7.3-bz2
+sudo apt-get install -y php7.3-json
+sudo apt-get install -y php7.3-tidy
+sudo apt-get install -y php7.3-mbstring
+sudo apt-get install -y php7.3-xml
+sudo apt-get install -y php7.3-dev
+sudo apt-get install -y php7.3-soap
+sudo apt-get install -y php-redis
+sudo apt-get install -y php-memcached
+sudo apt-get install -y php7.3-zip
+sudo apt-get install -y php-apcu
+sudo apt-get install -y php7.3-sqlite3
 sudo a2enmod proxy_fcgi setenvif
-sudo a2enconf php7.1-fpm
+sudo a2enconf php7.3-fpm
+
+pecl install apcu
+
+echo"extension=apcu.so" | tee -a /etc/php/7.3/mods-available/cache.ini
 
 # Configuration date
-sudo sed -i "s/;date.timezone =/date.timezone = Europe\/Paris/g" /etc/php/7.1/apache2/php.ini
+sudo sed -i "s/;date.timezone =/date.timezone = Europe\/Paris/g" /etc/php/7.3/apache2/php.ini
 
 sudo service apache2 restart
 
 #
 # Installation de xdebug
 #
-printf "%s" "${GREEN}"
+echo -e "$GREEN"
 echo ''
 echo '###########################################'
 echo '#           xdebug installation           #'
 echo '###########################################'
 echo ''
 echo ''
-printf "%s" "${NORMAL}"
+echo -e "$NORMAL"
 
 sudo pecl install xdebug
 
@@ -184,20 +195,22 @@ sudo service apache2 restart
 #
 # Composer
 #
-printf "%s" "${GREEN}"
+echo -e "$GREEN"
 echo ''
 echo '###########################################'
 echo '#          Composer installation          #'
 echo '###########################################'
 echo ''
 echo ''
-printf "%s" "${NORMAL}"
+echo -e "$NORMAL"
+
 php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
 php -r "if (hash_file('SHA384', 'composer-setup.php') === '93b54496392c062774670ac18b134c3b3a95e5a5e5c8f1a9f115f203b75bf9a129d5daa8ba6a13e2cc8a1da0806388a8') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
 sudo php composer-setup.php --install-dir=/usr/local/bin
 php -r "unlink('composer-setup.php');"
 sudo chown "$USER":"$USER" /usr/local/bin/composer.phar
 sudo chown -R "$USER":"$USER" .composer
+
 echo "
 #
 # Composer
@@ -208,15 +221,17 @@ source "$HOME"/.bashrc
 #
 # PHP-CS-FIXER
 #
-printf "%s" "${GREEN}"
+echo -e "$GREEN"
 echo ''
 echo '###########################################'
 echo '#         PHP-CS-FIXER installation       #'
 echo '###########################################'
 echo ''
 echo ''
-printf "%s" "${NORMAL}"
+echo -e "$NORMAL"
+
 composer global require friendsofphp/php-cs-fixer
+
 echo "
 #
 # PHP-CS-FIXER
@@ -227,15 +242,17 @@ source "$HOME"/.bashrc
 #
 # PHP code sniffer
 #
-printf "%s" "${GREEN}"
+echo -e "$GREEN"
 echo ''
 echo '###########################################'
 echo '#      PHP code sniffer installation      #'
 echo '###########################################'
 echo ''
 echo ''
-printf "%s" "${NORMAL}"
+echo -e "$NORMAL"
+
 composer global require "squizlabs/php_codesniffer=*"
+
 echo "
 #
 # PHP code sniffer
@@ -247,16 +264,18 @@ source "$HOME"/.bashrc
 #
 # PHP Mess Detector
 #
-printf "%s" "${GREEN}"
+echo -e "$GREEN"
 echo ''
 echo '###########################################'
 echo '#     PHP Mess Detector installation      #'
 echo '###########################################'
 echo ''
 echo ''
-printf "%s" "${NORMAL}"
+echo -e "$NORMAL"
+
+echo -e "$YELLOW"
 wget -c http://static.phpmd.org/php/latest/phpmd.phar
-chmod u+x phpmd.phar
+echo -e "$NORMAL"chmod u+x phpmd.phar
 sudo mv phpmd.phar /usr/local/bin/phpmd.phar
 echo "
 #
@@ -269,7 +288,7 @@ source "$HOME"/.bashrc
 #
 # PHP Copy/Paste Detector (PHPCPD)
 #
-printf "%s" "${GREEN}"
+echo -e "$GREEN"
 echo ''
 echo '###########################################'
 echo '#         PHP Copy/Paste Detector         #'
@@ -277,10 +296,14 @@ echo '#               installation              #'
 echo '###########################################'
 echo ''
 echo ''
-printf "%s" "${NORMAL}"
+echo -e "$NORMAL"
+
+echo -e "$YELLOW"
 wget https://phar.phpunit.de/phpcpd.phar
+echo -e "$NORMAL"
 chmod +x phpcpd.phar
 sudo mv phpcpd.phar /usr/local/bin/phpcpd
+
 echo "
 #
 # PHP Copy/Paste Detector
@@ -298,14 +321,15 @@ source "$HOME"/.bashrc
 #
 # Installation postfix
 #
-#printf "%s" "${GREEN}"
+#echo -e "$GREEN"
 #echo ''
 #echo '###########################################'
 #echo '#           Installation postfix          #'
 #echo '###########################################'
 #echo ''
 #echo ''
-#printf "%s" "${NORMAL}"
+#echo -e "$NORMAL"
+
 #sudo apt-get -y install postfix
 #sudo apt-get install -y mailutils
 # Site internet
@@ -317,23 +341,24 @@ source "$HOME"/.bashrc
 #
 # Setup server
 #
-printf "%s" "${GREEN}"
+echo -e "$GREEN"
 echo ''
 echo '###########################################'
 echo '#               Setup server              #'
 echo '###########################################'
 echo ''
 echo ''
-printf "%s" "${NORMAL}"
+echo -e "$NORMAL"
 
 if [ ! -d "$HOME/www" ]; then
-  mkdir "$HOME"/www
+    mkdir "$HOME"/www
 fi
 
 sudo chown -R "$USER":www-data "$HOME"/www
 
 sudo mv /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-available/000-default.conf.old
 touch "$HOME"/000-default.conf
+
 echo "
 <VirtualHost *:80>
     # The ServerName directive sets the request scheme, hostname and port that
@@ -370,14 +395,14 @@ sudo service apache2 reload
 #
 # Installation de samba
 #
-printf "%s" "${GREEN}"
+echo -e "$GREEN"
 echo ''
 echo '###########################################'
 echo '#                  SAMBA                  #'
 echo '###########################################'
 echo ''
 echo ''
-printf "%s" "${NORMAL}"
+echo -e "$NORMAL"
 
 sudo apt-get install -y samba
 
@@ -405,15 +430,19 @@ sudo service smbd restart
 #
 # Installation of Blackfire
 #
-printf "%s" "${GREEN}"
+echo -e "$GREEN"
 echo ''
 echo '###########################################'
 echo '#         BlackFire Installation          #'
 echo '###########################################'
 echo ''
 echo ''
-printf "%s" "${NORMAL}"
+echo -e "$NORMAL"
+
+echo -e "$YELLOW"
 wget -q -O - https://packagecloud.io/gpg.key | sudo apt-key add -
+echo -e "$NORMAL"
+
 echo "deb http://packages.blackfire.io/debian any main" | sudo tee /etc/apt/sources.list.d/blackfire.list
 sudo apt-get update -y
 sudo apt-get install -y blackfire-agent
@@ -436,14 +465,15 @@ sudo apt-get install -y blackfire-php
 #
 # Shell custom
 #
-printf "%s" "${GREEN}"
+echo -e "$GREEN"
 echo ''
 echo '###########################################'
 echo '#            zsh installation             #'
 echo '###########################################'
 echo ''
 echo ''
-printf "%s" "${NORMAL}"
+echo -e "$NORMAL"
+
 sudo apt-get install -y fonts-powerline
 sudo apt-get install -y zsh
 git clone https://github.com/robbyrussell/oh-my-zsh.git  "$HOME"/.oh-my-zsh
@@ -481,24 +511,25 @@ sudo chmod -R 755 "$HOME"/.oh-my-zsh
 #
 # Cleaning after installation
 #
-printf "%s" "${GREEN}"
+echo -e "$GREEN"
 echo ''
 echo '###########################################'
 echo '#                Cleaning                 #'
 echo '###########################################'
 echo ''
 echo ''
-printf "%s" "${NORMAL}"
+echo -e "$NORMAL"
+
 sudo apt-get -y update
 sudo apt-get -y upgrade
 sudo apt-get -y autoremove --purge
 sudo apt-get -y autoclean
 
 if [ -d "ubuntu-server-16.04-server-web" ]; then
-  sudo rm -r ubuntu-server-16.04-server-web
+    sudo rm -r ubuntu-server-16.04-server-web
 fi
 
-printf "%s" "${GREEN}"
+echo -e "$GREEN"
 echo ''
 echo '  _____         __                    '
 echo ' /__  /  ____  / /_  ____ ______      '
@@ -507,16 +538,18 @@ echo '  / /__/ /_/ / / / / /_/ / /__        '
 echo ' /____/\____/_/ /_/\__,_/\___/  web server installation script...is now installed!'
 echo ''
 echo ''
-printf "%s" "${NORMAL}"
+echo -e "$NORMAL"
 
 while :
 do
 
-    read -p "You should restart [Y/n] ?" RESPONSE
+    read -p "You should restart [Y/n] ? " RESPONSE
 
     case $RESPONSE in
         N|n)
+            echo -e "$YELLOW"
             echo "Remember to restart !"
+            echo -e "$NORMAL"
             break
         ;;
         Y|y)
@@ -525,7 +558,9 @@ do
             break
         ;;
         *)
+            echo -e "$RED"
             echo "Error, you had to answer yes[Y] or no[n]."
+            echo -e "$NORMAL"
         ;;
     esac
 done
