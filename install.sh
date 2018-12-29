@@ -36,80 +36,82 @@ echo ''
 echo ''
 echo -e "$NORMAL"
 
+EXIT_STATUS=0
+
 #
 # Update the server
 #
-source dependencies/update.sh
+source dependencies/update.sh || EXIT_STATUS=$?
 
 #
 # Installation dependencies
 #
-source dependencies/dependencies_installation.sh
+source dependencies/dependencies_installation.sh || EXIT_STATUS=$?
 
 #
 # Installation apache2
 #
-source dependencies/apache2_installation.sh
+source dependencies/apache2_installation.sh || EXIT_STATUS=$?
 
 #
 # Installation MySQL
 #
-source dependencies/mysql_installation.sh
+source dependencies/mysql_installation.sh || EXIT_STATUS=$?
 
 #
 # Installation php7.1
 #
-source dependencies/php7.3_installation.sh
+source dependencies/php7.3_installation.sh || EXIT_STATUS=$?
 
 #
 # Installation de xdebug
 #
-source dependencies/xdebug_installation.sh
+source dependencies/xdebug_installation.sh || EXIT_STATUS=$?
 
 #
 # Composer
 #
-source dependencies/composer_installation.sh
+source dependencies/composer_installation.sh || EXIT_STATUS=$?
 
 #
 # PHP-CS-FIXER
 #
-source dependencies/php-cs-fixer_installation.sh
+source dependencies/php-cs-fixer_installation.sh || EXIT_STATUS=$?
 
 #
 # PHP code sniffer
 #
-source dependencies/php-code-sniffer_installation.sh
+source dependencies/php-code-sniffer_installation.sh || EXIT_STATUS=$?
 
 #
 # PHP Mess Detector
 #
-source dependencies/php-mess-detector_installation.sh
+source dependencies/php-mess-detector_installation.sh || EXIT_STATUS=$?
 
 #
 # PHP Copy/Paste Detector (PHPCPD)
 #
-source dependencies/copy-paste-detector_installation.sh
+source dependencies/copy-paste-detector_installation.sh || EXIT_STATUS=$?
 
 #
 # Installation de samba
 #
-source dependencies/samba_installation.sh
+source dependencies/samba_installation.sh || EXIT_STATUS=$?
 
 #
 # Installation of Blackfire
 #
-source dependencies/blackFire_installation.sh
+source dependencies/blackFire_installation.sh || EXIT_STATUS=$?
 
 #
 # Shell custom
 #
-source dependencies/zsh_installation.sh
+source dependencies/zsh_installation.sh || EXIT_STATUS=$?
 
 #
 # Cleaning after installation
 #
-source dependencies/cleaning.sh
+source dependencies/cleaning.sh || EXIT_STATUS=$?
 
 echo -e "$GREEN"
 echo ' _____         __                    '
@@ -149,4 +151,4 @@ do
 
 done
 
-exit 0;
+exit $EXIT_STATUS

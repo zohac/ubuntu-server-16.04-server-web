@@ -51,4 +51,4 @@ sudo sed -i "s/;date.timezone =/date.timezone = Europe\/Paris/g" /etc/php/7.3/ap
 
 sudo service apache2 restart
 
-exit
+exit 0;

@@ -29,4 +29,4 @@ eof
 
 sudo service smbd restart
 
-exit
+exit 0;

@@ -46,4 +46,4 @@ eof
 
 sudo service apache2 restart
 
-exit
+exit 0;

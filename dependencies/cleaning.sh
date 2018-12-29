@@ -22,4 +22,4 @@ if [ -d "ubuntu-server-16.04-server-web" ]; then
     sudo rm -r ubuntu-server-16.04-server-web
 fi
 
-exit
+exit 0;

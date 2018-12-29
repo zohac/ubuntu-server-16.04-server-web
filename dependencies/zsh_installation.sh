@@ -47,4 +47,4 @@ source "$HOME"/.zshrc
 
 sudo chmod -R 755 "$HOME"/.oh-my-zsh
 
-exit
+exit 0;

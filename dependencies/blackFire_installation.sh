@@ -36,4 +36,4 @@ sudo apt-get install -y blackfire-agent
 
 sudo apt-get install -y blackfire-php
 
-exit
+exit 0;

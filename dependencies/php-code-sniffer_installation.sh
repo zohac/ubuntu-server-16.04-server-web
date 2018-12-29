@@ -23,4 +23,4 @@ alias phpcs='$HOME/.composer/vendor/bin/phpcs'
 alias phpcbf='$HOME/.composer/vendor/bin/phpcbf'" >> "$HOME"/.bashrc
 source "$HOME"/.bashrc
 
-exit
+exit 0;

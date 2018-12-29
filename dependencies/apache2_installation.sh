@@ -80,4 +80,4 @@ sudo mv  "$HOME"/000-default.conf /etc/apache2/sites-available/000-default.conf
 sudo apache2ctl configtest
 sudo service apache2 reload
 
-exit
+exit 0;
