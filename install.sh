@@ -5,6 +5,7 @@ RED="\e[31m"
 GREEN="\e[32m"
 YELLOW="\e[33m"
 NORMAL="\e[39m"
+CURRENT_DIR=$PWD'/'`dirname $0`
 
 # Retrieving parameters
 RESPONSE=''
@@ -39,91 +40,91 @@ echo -e "$NORMAL"
 #
 # Update the server
 #
-source dependencies/update.sh $ARTIFACT_VERSION
+source "$CURRENT_DIR"/dependencies/update.sh $ARTIFACT_VERSION
 exit_state_1=$?
 
 #
 # Installation dependencies
 #
-source dependencies/dependencies_installation.sh $ARTIFACT_VERSION
+source "$CURRENT_DIR"/dependencies/dependencies_installation.sh $ARTIFACT_VERSION
 exit_state_2=$?
 
 #
 # Installation apache2
 #
-source dependencies/apache2_installation.sh $ARTIFACT_VERSION
+source "$CURRENT_DIR"/dependencies/apache2_installation.sh $ARTIFACT_VERSION
 exit_state_3=$?
 
 #
 # Installation MySQL
 #
-source dependencies/mysql_installation.sh $ARTIFACT_VERSION
+source "$CURRENT_DIR"/dependencies/mysql_installation.sh $ARTIFACT_VERSION
 exit_state_4=$?
 
 #
 # Installation php7.1
 #
-source dependencies/php7.3_installation.sh $ARTIFACT_VERSION
+source "$CURRENT_DIR"/dependencies/php7.3_installation.sh $ARTIFACT_VERSION
 exit_state_5=$?
 
 #
 # Installation de xdebug
 #
-source dependencies/xdebug_installation.sh $ARTIFACT_VERSION
+source "$CURRENT_DIR"/dependencies/xdebug_installation.sh $ARTIFACT_VERSION
 exit_state_6=$?
 
 #
 # Composer
 #
-source dependencies/composer_installation.sh $ARTIFACT_VERSION
+source "$CURRENT_DIR"/dependencies/composer_installation.sh $ARTIFACT_VERSION
 exit_state_7=$?
 
 #
 # PHP-CS-FIXER
 #
-source dependencies/php-cs-fixer_installation.sh $ARTIFACT_VERSION
+source "$CURRENT_DIR"/dependencies/php-cs-fixer_installation.sh $ARTIFACT_VERSION
 exit_state_8=$?
 
 #
 # PHP code sniffer
 #
-source dependencies/php-code-sniffer_installation.sh $ARTIFACT_VERSION
+source "$CURRENT_DIR"/dependencies/php-code-sniffer_installation.sh $ARTIFACT_VERSION
 exit_state_9=$?
 
 #
 # PHP Mess Detector
 #
-source dependencies/php-mess-detector_installation.sh $ARTIFACT_VERSION
+source "$CURRENT_DIR"/dependencies/php-mess-detector_installation.sh $ARTIFACT_VERSION
 exit_state_10=$?
 
 #
 # PHP Copy/Paste Detector (PHPCPD)
 #
-source dependencies/copy-paste-detector_installation.sh $ARTIFACT_VERSION
+source "$CURRENT_DIR"/dependencies/copy-paste-detector_installation.sh $ARTIFACT_VERSION
 exit_state_11=$?
 
 #
 # Installation de samba
 #
-source dependencies/samba_installation.sh $ARTIFACT_VERSION
+source "$CURRENT_DIR"/dependencies/samba_installation.sh $ARTIFACT_VERSION
 exit_state_12=$?
 
 #
 # Installation of Blackfire
 #
-source dependencies/blackFire_installation.sh $ARTIFACT_VERSION
+source "$CURRENT_DIR"/dependencies/blackFire_installation.sh $ARTIFACT_VERSION
 exit_state_13=$?
 
 #
 # Shell custom
 #
-source dependencies/zsh_installation.sh $ARTIFACT_VERSION
+source "$CURRENT_DIR"/dependencies/zsh_installation.sh $ARTIFACT_VERSION
 exit_state_14=$?
 
 #
 # Cleaning after installation
 #
-source dependencies/cleaning.sh $ARTIFACT_VERSION
+source "$CURRENT_DIR"/dependencies/cleaning.sh $ARTIFACT_VERSION
 exit_state_15=$?
 
 EXIT_STATUS=$[ $exit_state_1 &&  $exit_state_2 && $exit_state_3 &&  $exit_state_4 && $exit_state_5 &&  $exit_state_6 && $exit_state_7 &&  $exit_state_8 && $exit_state_9 &&  $exit_state_10 && $exit_state_11 &&  $exit_state_12 && $exit_state_13 &&  $exit_state_14 && $exit_state_15]
