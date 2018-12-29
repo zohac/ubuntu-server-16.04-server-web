@@ -5,7 +5,7 @@ RED="\e[31m"
 GREEN="\e[32m"
 YELLOW="\e[33m"
 NORMAL="\e[39m"
-CURRENT_DIR=$PWD'/'`dirname $0`
+FULL_DIR=$PWD'/'`dirname $0`
 
 # Retrieving parameters
 RESPONSE=''
@@ -37,80 +37,32 @@ echo ''
 echo ''
 echo -e "$NORMAL"
 
-#
-# Update the server
-#
-source "$CURRENT_DIR"/dependencies/update.sh
+DEPENDENCIES=(
+    "update.sh"
+    "dependencies_installation.sh"
+    "apache2_installation.sh"
+    "mysql_installation.sh"
+    "php7.3_installation.sh"
+    "xdebug_installation.sh"
+    "composer_installation.sh"
+    "php-cs-fixer_installation.sh"
+    "php-code-sniffer_installation.sh"
+    "php-mess-detector_installation.sh"
+    "copy-paste-detector_installation.sh"
+    "samba_installation.sh"
+    "blackFire_installation.sh"
+    "zsh_installation.sh"
+    "cleaning.sh"
+)
 
-#
-# Installation dependencies
-#
-source "$CURRENT_DIR"/dependencies/dependencies_installation.sh
+# get length of $distro array
+length=${#DEPENDENCIES[@]}
 
-#
-# Installation apache2
-#
-source "$CURRENT_DIR"/dependencies/apache2_installation.sh
-
-#
-# Installation MySQL
-#
-source "$CURRENT_DIR"/dependencies/mysql_installation.sh
-
-#
-# Installation php7.1
-#
-source "$CURRENT_DIR"/dependencies/php7.3_installation.sh
-
-#
-# Installation de xdebug
-#
-source "$CURRENT_DIR"/dependencies/xdebug_installation.sh
-
-#
-# Composer
-#
-source "$CURRENT_DIR"/dependencies/composer_installation.sh
-
-#
-# PHP-CS-FIXER
-#
-source "$CURRENT_DIR"/dependencies/php-cs-fixer_installation.sh
-
-#
-# PHP code sniffer
-#
-source "$CURRENT_DIR"/dependencies/php-code-sniffer_installation.sh
-
-#
-# PHP Mess Detector
-#
-source "$CURRENT_DIR"/dependencies/php-mess-detector_installation.sh
-
-#
-# PHP Copy/Paste Detector (PHPCPD)
-#
-source "$CURRENT_DIR"/dependencies/copy-paste-detector_installation.sh
-
-#
-# Installation de samba
-#
-source "$CURRENT_DIR"/dependencies/samba_installation.sh
-
-#
-# Installation of Blackfire
-#
-source "$CURRENT_DIR"/dependencies/blackFire_installation.sh
-
-#
-# Shell custom
-#
-source "$CURRENT_DIR"/dependencies/zsh_installation.sh
-
-#
-# Cleaning after installation
-#
-source "$CURRENT_DIR"/dependencies/cleaning.sh
+# Use bash for loop
+for (( i=0; i<$length; i++ ));
+    do
+        source "$FULL_DIR"/dependencies/"${DEPENDENCIES[$i]}" ;
+    done
 
 echo -e "$GREEN"
 echo ' _____         __                    '
