@@ -19,10 +19,15 @@ sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/to
 #git clone https://github.com/robbyrussell/oh-my-zsh.git  "$HOME"/.oh-my-zsh
 #rm "$HOME"/.zshrc
 #cp "$HOME"/.oh-my-zsh/templates/zshrc.zsh-template "$HOME"/.zshrc
+echo 'Change theme...'
 sed -i 's/ZSH_THEME="robbyrussell"/ZSH_THEME="agnoster"/g' "$HOME"/.zshrc
+echo 'Change auth...'
 sudo sed -i 's/auth       required   pam_shells.so/auth       sufficient   pam_shells.so/g' /etc/pam.d/chsh
+echo 'Refresh auth...'
 sudo /usr/sbin/pam-auth-update
+echo 'Change shell...'
 chsh -s $(which zsh)
+echo 'Change auth...'
 sudo sed -i 's/auth       sufficient   pam_shells.so/auth       required   pam_shells.so/g' /etc/pam.d/chsh
 sudo /usr/sbin/pam-auth-update
 
