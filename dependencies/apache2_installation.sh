@@ -2,6 +2,11 @@
 # Version 0.1
 
 APACHE_LOG_DIR='${APACHE_LOG_DIR}'
+RED="\e[31m"
+GREEN="\e[32m"
+YELLOW="\e[33m"
+BLUE="\e[34m"
+NORMAL="\e[39m"
 
 #
 # Installation apache2

@@ -37,12 +37,12 @@ echo ''
 echo -e "$NORMAL"
 
 echo -e "$BLUE"'Update...'"$NORMAL"
-#sudo apt-get -y update
+sudo apt-get -y update
 echo -e "$BLUE"'Installation of Dialog...'"$NORMAL"
-#sudo apt-get install -y dialog
+sudo apt-get install -y dialog
 
 DIALOG="${DIALOG=dialog}"
-TEMP_FILE=`tempfile 2>/dev/null` || TEMP_FILE=/tmp/test$$
+TEMP_FILE=$(tempfile 2>/dev/null) || TEMP_FILE=/tmp/test$$
 trap "rm -f $TEMP_FILE" 0 1 2 5 15
 
 "$DIALOG" --backtitle "Choisissez les composants à installer" \
@@ -65,7 +65,7 @@ trap "rm -f $TEMP_FILE" 0 1 2 5 15
         "cleaning" "Nettoyage de l'installation" ON 2> "$TEMP_FILE"
 
 DIALOG_RESPONSE="$?"
-CHOICE=`cat "$TEMP_FILE"`
+CHOICE=$(cat "$TEMP_FILE")
 
 case "$DIALOG_RESPONSE" in
     0)
