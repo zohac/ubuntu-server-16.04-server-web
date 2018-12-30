@@ -35,7 +35,6 @@ sudo php composer-setup.php --quiet --filename=composer --install-dir=/usr/local
 RESULT=$?
 sudo rm composer-setup.php
 sudo chown "$USER":"$USER" /usr/local/bin/composer
-sudo chown -R "$USER":"$USER" .composer
 
 echo "
 #
@@ -44,4 +43,4 @@ echo "
 alias composer='/usr/local/bin/composer'" >> "$HOME"/.bashrc
 source "$HOME"/.bashrc
 
-exit $RESULT
+# exit $RESULT
