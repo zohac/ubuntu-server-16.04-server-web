@@ -34,7 +34,7 @@ fi
 
 echo -e "$BLUE"'Installation of composer...'"$NORMAL"
 sudo php composer-setup.php --quiet --filename=composer --install-dir=/usr/local/bin
-RESULT="$?"
+#RESULT="$?"
 sudo rm composer-setup.php
 sudo chown "$USER":"$USER" /usr/local/bin/composer
 
