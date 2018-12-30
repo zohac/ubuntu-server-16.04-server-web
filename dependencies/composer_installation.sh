@@ -42,7 +42,7 @@ composer -V
 if [ ! -d "$HOME"/.composer ]; then
     mkdir "$HOME"/.composer
 fi
-sudo chown -R "$USER":"$USER" .composer
+sudo chown -R "$USER":"$USER" "$HOME"/.composer
 
 echo "
 #
