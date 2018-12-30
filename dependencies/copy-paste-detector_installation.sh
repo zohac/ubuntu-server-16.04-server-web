@@ -16,8 +16,8 @@ echo -e "$NORMAL"
 echo -e "$YELLOW"
 wget https://phar.phpunit.de/phpcpd.phar
 echo -e "$NORMAL"
-chmod +x phpcpd.phar
 sudo mv phpcpd.phar /usr/local/bin/phpcpd
+chmod u+x /usr/local/bin/phpcpd
 
 echo "
 #
@@ -29,6 +29,7 @@ source "$HOME"/.bashrc
 # example of use:
 #
 # php-cs-fixer fix src --rules=@Symfony,-@PSR1,-@PSR2
-# phpcs
-# phpcbf
+# php code sniffer :
+#           - phpcs
+#           - phpcbf
 # phpmd src html codesize,unusedcode,naming --reportfile phpmd.html --suffixes php,phtml
