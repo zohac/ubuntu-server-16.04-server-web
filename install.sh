@@ -28,13 +28,13 @@ if [ "$1" ]; then
 fi
 
 echo -e "$GREEN"
-echo '  _       __     __                         '
-echo ' | |     / /__  / /________  ____ ___  ___  '
-echo ' | | /| / / _ \/ / ___/ __ \/ __ `__ \/ _ \ '
-echo ' | |/ |/ /  __/ / /__/ /_/ / / / / / /  __/ '
-echo ' |__/|__/\___/_/\___/\____/_/ /_/ /_/\___/  '
+echo -e "$GREEN"'  _       __     __                         '
+echo -e "$GREEN"' | |     / /__  / /________  ____ ___  ___  '
+echo -e "$GREEN"' | | /| / / _ \/ / ___/ __ \/ __ `__ \/ _ \ '
+echo -e "$GREEN"' | |/ |/ /  __/ / /__/ /_/ / / / / / /  __/ '
+echo -e "$GREEN"' |__/|__/\___/_/\___/\____/_/ /_/ /_/\___/  '
 echo ''
-echo 'Installing Apache2/PHP7.3/MySQL for a development web server on ubuntu server 18.04.'
+echo -e "$GREEN"'Installing Apache2/PHP7.3/MySQL for a development web server on ubuntu server 18.04.'
 echo ''
 echo ''
 echo -e "$NORMAL"

@@ -36,6 +36,10 @@ RESULT=$?
 sudo rm composer-setup.php
 sudo chown "$USER":"$USER" /usr/local/bin/composer
 
+echo -e "$BLUE"'Version of composer...'"$NORMAL"
+composer -V
+sudo chown -R "$USER":"$USER" .composer
+
 echo "
 #
 # Composer
