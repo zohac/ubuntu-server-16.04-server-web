@@ -4,6 +4,7 @@
 RED="\e[31m"
 GREEN="\e[32m"
 YELLOW="\e[33m"
+BLUE="\e[34m"
 NORMAL="\e[39m"
 
 FULL_DIR=$PWD'/'`dirname $0`

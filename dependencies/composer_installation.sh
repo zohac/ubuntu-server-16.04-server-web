@@ -13,22 +13,35 @@ echo ''
 echo ''
 echo -e "$NORMAL"
 
+echo -e "$BLUE"'Download the signature...'"$NORMAL"
+EXPECTED_SIGNATURE="$(wget -q -O - https://composer.github.io/installer.sig)"
+
+echo -e "$BLUE"'Download the installer...'"$NORMAL"
 php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
-php -r "
-if (hash_file('SHA384', 'composer-setup.php') ===
-    '93b54496392c062774670ac18b134c3b3a95e5a5e5c8f1a9f115f203b75bf9a129d5daa8ba6a13e2cc8a1da0806388a8') {
-        echo 'Installer verified';
-    } else {
-            echo 'Installer corrupt'; unlink('composer-setup.php');
-    } echo PHP_EOL;"
-sudo php composer-setup.php --install-dir=/usr/local/bin
-php -r "unlink('composer-setup.php');"
-sudo chown "$USER":"$USER" /usr/local/bin/composer.phar
+
+echo -e "$BLUE"'Calculating the signature...'"$NORMAL"
+ACTUAL_SIGNATURE="$(php -r "echo hash_file('sha384', 'composer-setup.php');")"
+
+echo -e "$BLUE"'Test of the signature...'"$NORMAL"
+if [ "$EXPECTED_SIGNATURE" != "$ACTUAL_SIGNATURE" ]
+then
+    >&2 echo -e "$RED"'ERROR: Invalid installer signature'
+    rm composer-setup.php
+    exit 1
+fi
+
+echo -e "$BLUE"'Installation of composer...'"$NORMAL"
+sudo php composer-setup.php --quiet --filename=composer --install-dir=/usr/local/bin
+RESULT=$?
+sudo rm composer-setup.php
+sudo chown "$USER":"$USER" /usr/local/bin/composer
 sudo chown -R "$USER":"$USER" .composer
 
 echo "
 #
 # Composer
 #
-alias composer='/usr/local/bin/composer.phar'" >> "$HOME"/.bashrc
+alias composer='/usr/local/bin/composer'" >> "$HOME"/.bashrc
 source "$HOME"/.bashrc
+
+exit $RESULT

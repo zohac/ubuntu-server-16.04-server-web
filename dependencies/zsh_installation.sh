@@ -41,7 +41,7 @@ echo "
 #
 # Composer
 #
-alias composer='/usr/local/bin/composer.phar'
+alias composer='/usr/local/bin/composer'
 
 #
 # PHP-CS-FIXER
