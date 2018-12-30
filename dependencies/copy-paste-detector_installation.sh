@@ -1,7 +1,8 @@
 #!/bin/bash
 # Version 0.1
 
-source color.sh
+FULL_DIR=$PWD'/'$(dirname $0)
+source "$FULL_DIR"/dependencies/color.sh
 
 #
 # PHP Copy/Paste Detector (PHPCPD)

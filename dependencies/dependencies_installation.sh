@@ -1,7 +1,8 @@
 #!/bin/bash
 # Version 0.1
 
-source color.sh
+FULL_DIR=$PWD'/'$(dirname $0)
+source "$FULL_DIR"/dependencies/color.sh
 
 echo ''
 echo -e "$GREEN"'###########################################'
@@ -22,11 +23,6 @@ sudo apt-get install -y zip
 
 echo -e "$BLUE"'Install software-properties-common...'"$NORMAL"
 sudo apt-get install -y software-properties-common
-
-echo -e "$BLUE"'Install python...'"$NORMAL"
-sudo add-apt-repository ppa:jonathonf/python-3.6
-sudo apt update
-sudo apt install python3.6
 
 echo -e "$BLUE"'Install powerline-shell...'"$NORMAL"
 pip install powerline-shell

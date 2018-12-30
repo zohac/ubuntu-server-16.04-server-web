@@ -2,7 +2,6 @@
 # Version 0.1
 
 FULL_DIR=$PWD'/'$(dirname $0)
-
 source "$FULL_DIR"/dependencies/color.sh
 
 # Retrieving parameters
