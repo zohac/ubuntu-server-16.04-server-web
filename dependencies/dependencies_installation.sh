@@ -1,6 +1,9 @@
 #!/bin/bash
 # Version 0.1
 
+FULL_DIR=$PWD'/'$(dirname $0)
+source "$FULL_DIR"/color.sh
+
 echo ''
 echo -e "$GREEN"'###########################################'
 echo -e "$GREEN"'#        dependencies installation        #'
@@ -18,15 +21,11 @@ sudo apt-get install -y apt-transport-https
 echo -e "$BLUE"'Install zip...'"$NORMAL"
 sudo apt-get install -y zip
 
-echo -e "$BLUE"'Install python...'"$NORMAL"
-sudo apt-get install -y python-pip
-
 echo -e "$BLUE"'Install software-properties-common...'"$NORMAL"
 sudo apt-get install -y software-properties-common
 
-echo -e "$BLUE"'Download powerline-shell...'"$NORMAL"
-git clone https://github.com/b-ryan/powerline-shell
-cd powerline-shell || return
+echo -e "$BLUE"'Install python-pip...'"$NORMAL"
+sudo apt install -y python-pip
 
 echo -e "$BLUE"'Install powerline-shell...'"$NORMAL"
-python setup.py install
+sudo pip install powerline-shell
