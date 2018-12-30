@@ -37,8 +37,12 @@ sudo chown "$USER":"$USER" /usr/local/bin/composer
 
 echo -e "$BLUE"'Version of composer...'"$NORMAL"
 composer -V
-sudo chown -R "$USER":"$USER" ./composer.json
-#sudo chown -R "$USER":"$USER" .composer
+
+# Test of the presence of the directory .composer
+if [ ! -d "$HOME"/.composer ]; then
+    mkdir "$HOME"/.composer
+fi
+sudo chown -R "$USER":"$USER" .composer
 
 echo "
 #
