@@ -4,11 +4,10 @@
 #
 # Installation of Blackfire
 #
-echo -e "$GREEN"
 echo ''
-echo '###########################################'
-echo '#         BlackFire Installation          #'
-echo '###########################################'
+echo -e "$GREEN"'###########################################'
+echo -e "$GREEN"'#         BlackFire Installation          #'
+echo -e "$GREEN"'###########################################'
 echo ''
 echo ''
 echo -e "$NORMAL"

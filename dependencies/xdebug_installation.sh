@@ -4,11 +4,10 @@
 #
 # Installation de xdebug
 #
-echo -e "$GREEN"
 echo ''
-echo '###########################################'
-echo '#           xdebug installation           #'
-echo '###########################################'
+echo -e "$GREEN"'###########################################'
+echo -e "$GREEN"'#           xdebug installation           #'
+echo -e "$GREEN"'###########################################'
 echo ''
 echo ''
 echo -e "$NORMAL"

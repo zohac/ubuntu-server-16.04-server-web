@@ -6,11 +6,10 @@ APACHE_LOG_DIR='${APACHE_LOG_DIR}'
 #
 # Installation apache2
 #
-echo -e "$GREEN"
 echo ''
-echo '###########################################'
-echo '#         apache2 installation            #'
-echo '###########################################'
+echo -e "$GREEN"'###########################################'
+echo -e "$GREEN"'#         apache2 installation            #'
+echo -e "$GREEN"'###########################################'
 echo ''
 echo ''
 echo -e "$NORMAL"
@@ -31,9 +30,9 @@ sudo service apache2 restart
 #
 echo -e "$GREEN"
 echo ''
-echo '###########################################'
-echo '#               Setup server              #'
-echo '###########################################'
+echo -e "$GREEN"'###########################################'
+echo -e "$GREEN"'#               Setup server              #'
+echo -e "$GREEN"'###########################################'
 echo ''
 echo ''
 echo -e "$NORMAL"

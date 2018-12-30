@@ -1,4 +1,6 @@
 language: bash
 
+dist: xenial
+
 script:
     - bash install.sh n
