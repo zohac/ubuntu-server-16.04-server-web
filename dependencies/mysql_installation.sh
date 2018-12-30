@@ -14,7 +14,7 @@ echo ''
 echo ''
 echo -e "$NORMAL"
 
-echo -e "$BLUE"'Installation of Mysql...'
+echo -e "$BLUE"'Installation of Mysql...'"$NORMAL"
 CONF="mysql-server mysql-server/root_password password ${MYSQL_PASSWORD}"
 sudo debconf-set-selections <<< ${CONF}
 CONF="mysql-server mysql-server/root_password_again password ${MYSQL_PASSWORD}"
