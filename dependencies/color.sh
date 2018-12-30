@@ -13,10 +13,10 @@ if test -t 1; then
     ncolors=$(tput colors)
 
     if test -n "$ncolors" && test $ncolors -ge 8; then
-        $RED="\e[31m"
-        $GREEN="\e[32m"
-        $YELLOW="\e[33m"
-        $BLUE="\e[34m"
-        $NORMAL="\e[39m"
+        RED="\e[31m"
+        GREEN="\e[32m"
+        YELLOW="\e[33m"
+        BLUE="\e[34m"
+        NORMAL="\e[39m"
     fi
 fi
