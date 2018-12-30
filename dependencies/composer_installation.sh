@@ -37,7 +37,8 @@ sudo chown "$USER":"$USER" /usr/local/bin/composer
 
 echo -e "$BLUE"'Version of composer...'"$NORMAL"
 composer -V
-sudo chown -R "$USER":"$USER" .composer
+sudo chown -R "$USER":"$USER" ./composer.json
+#sudo chown -R "$USER":"$USER" .composer
 
 echo "
 #
