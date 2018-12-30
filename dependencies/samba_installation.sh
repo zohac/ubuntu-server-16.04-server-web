@@ -4,15 +4,15 @@
 #
 # Installation de samba
 #
-echo -e "$GREEN"
 echo ''
-echo '###########################################'
-echo '#                  SAMBA                  #'
-echo '###########################################'
+echo -e "$GREEN"'###########################################'
+echo -e "$GREEN"'#                  SAMBA                  #'
+echo -e "$GREEN"'###########################################'
 echo ''
 echo ''
 echo -e "$NORMAL"
 
+echo -e "$GREEN"'Installation of samba'"$NORMAL"
 sudo apt-get install -y samba
 
 sudo -s <<eof

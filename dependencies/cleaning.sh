@@ -4,11 +4,10 @@
 #
 # Cleaning after installation
 #
-echo -e "$GREEN"
 echo ''
-echo '###########################################'
-echo '#                Cleaning                 #'
-echo '###########################################'
+echo -e "$GREEN"'###########################################'
+echo -e "$GREEN"'#                Cleaning                 #'
+echo -e "$GREEN"'###########################################'
 echo ''
 echo ''
 echo -e "$NORMAL"

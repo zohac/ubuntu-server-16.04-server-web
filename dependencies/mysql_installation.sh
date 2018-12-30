@@ -6,15 +6,15 @@ MYSQL_PASSWORD='root'
 #
 # Installation MySQL
 #
-echo -e "$GREEN"
 echo ''
-echo '###########################################'
-echo '#           MySQL installation            #'
-echo '###########################################'
+echo -e "$GREEN"'###########################################'
+echo -e "$GREEN"'#           MySQL installation            #'
+echo -e "$GREEN"'###########################################'
 echo ''
 echo ''
 echo -e "$NORMAL"
 
+echo -e "$BLUE"'Installation of Mysql...'
 CONF="mysql-server mysql-server/root_password password ${MYSQL_PASSWORD}"
 sudo debconf-set-selections <<< ${CONF}
 CONF="mysql-server mysql-server/root_password_again password ${MYSQL_PASSWORD}"

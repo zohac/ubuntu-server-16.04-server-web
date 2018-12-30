@@ -4,11 +4,10 @@
 #
 # Shell custom
 #
-echo -e "$GREEN"
 echo ''
-echo '###########################################'
-echo '#            zsh installation             #'
-echo '###########################################'
+echo -e "$GREEN"'###########################################'
+echo -e "$GREEN"'#            zsh installation             #'
+echo -e "$GREEN"'###########################################'
 echo ''
 echo ''
 echo -e "$NORMAL"

@@ -4,12 +4,11 @@
 #
 # PHP Copy/Paste Detector (PHPCPD)
 #
-echo -e "$GREEN"
 echo ''
-echo '###########################################'
-echo '#         PHP Copy/Paste Detector         #'
-echo '#               installation              #'
-echo '###########################################'
+echo -e "$GREEN"'###########################################'
+echo -e "$GREEN"'#         PHP Copy/Paste Detector         #'
+echo -e "$GREEN"'#               installation              #'
+echo -e "$GREEN"'###########################################'
 echo ''
 echo ''
 echo -e "$NORMAL"

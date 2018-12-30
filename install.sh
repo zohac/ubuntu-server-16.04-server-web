@@ -18,16 +18,13 @@ if [ "$1" ]; then
             RESPONSE="$1"
         ;;
         *)
-            echo -e "$YELLOW"
-            echo "Les paramètres autorisés sont Y|y|N|n."
-            echo -e "$NORMAL"
-            exit 0;
+            echo -e "$YELLOW"'Les paramètres autorisés sont Y|y|N|n.'"$NORMAL"
+            exit 1;
         ;;
     esac
 
 fi
 
-echo -e "$GREEN"
 echo -e "$GREEN"'  _       __     __                         '
 echo -e "$GREEN"' | |     / /__  / /________  ____ ___  ___  '
 echo -e "$GREEN"' | | /| / / _ \/ / ___/ __ \/ __ `__ \/ _ \ '
@@ -66,12 +63,11 @@ for (( i=0; i<$length; i++ ));
         source "$FULL_DIR"/dependencies/"${DEPENDENCIES[$i]}" ;
     done
 
-echo -e "$GREEN"
-echo ' _____         __                    '
-echo '/__  /  ____  / /_  ____ ______      '
-echo '  / /  / __ \/ __ \/ __ `/ ___/      '
-echo ' / /__/ /_/ / / / / /_/ / /__        '
-echo '/____/\____/_/ /_/\__,_/\___/  web server installation script...is now installed!'
+echo -e "$GREEN"' _____         __                    '
+echo -e "$GREEN"'/__  /  ____  / /_  ____ ______      '
+echo -e "$GREEN"'  / /  / __ \/ __ \/ __ `/ ___/      '
+echo -e "$GREEN"' / /__/ /_/ / / / / /_/ / /__        '
+echo -e "$GREEN"'/____/\____/_/ /_/\__,_/\___/  web server installation script...is now installed!'
 echo ''
 echo ''
 echo -e "$NORMAL"
@@ -85,9 +81,7 @@ do
 
     case "$RESPONSE" in
         N|n)
-            echo -e "$YELLOW"
-            echo "Remember to restart !"
-            echo -e "$NORMAL"
+            echo -e "$YELLOW"'Remember to restart !'"$NORMAL"
             break
         ;;
         Y|y)
@@ -96,9 +90,7 @@ do
             break
         ;;
         *)
-            echo -e "$RED"
-            echo "Error, you had to answer yes[Y] or no[n]."
-            echo -e "$NORMAL"
+            echo -e "$RED"'Error, you had to answer yes[Y] or no[n].'"$NORMAL"
         ;;
     esac
 

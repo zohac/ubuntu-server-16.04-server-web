@@ -4,11 +4,10 @@
 #
 # PHP code sniffer
 #
-echo -e "$GREEN"
 echo ''
-echo '###########################################'
-echo '#      PHP code sniffer installation      #'
-echo '###########################################'
+echo -e "$GREEN"'###########################################'
+echo -e "$GREEN"'#      PHP code sniffer installation      #'
+echo -e "$GREEN"'###########################################'
 echo ''
 echo ''
 echo -e "$NORMAL"

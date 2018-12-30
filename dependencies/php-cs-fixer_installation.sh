@@ -4,11 +4,10 @@
 #
 # PHP-CS-FIXER
 #
-echo -e "$GREEN"
 echo ''
-echo '###########################################'
-echo '#         PHP-CS-FIXER installation       #'
-echo '###########################################'
+echo -e "$GREEN"'###########################################'
+echo -e "$GREEN"'#         PHP-CS-FIXER installation       #'
+echo -e "$GREEN"'###########################################'
 echo ''
 echo ''
 echo -e "$NORMAL"

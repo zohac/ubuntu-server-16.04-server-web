@@ -4,11 +4,10 @@
 #
 # Composer
 #
-echo -e "$GREEN"
 echo ''
-echo '###########################################'
-echo '#          Composer installation          #'
-echo '###########################################'
+echo -e "$GREEN"'###########################################'
+echo -e "$GREEN"'#          Composer installation          #'
+echo -e "$GREEN"'###########################################'
 echo ''
 echo ''
 echo -e "$NORMAL"
