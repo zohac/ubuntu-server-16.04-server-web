@@ -20,15 +20,13 @@ sudo apt-get install -y apt-transport-https
 echo -e "$BLUE"'Install zip...'"$NORMAL"
 sudo apt-get install -y zip
 
-echo -e "$BLUE"'Install python...'"$NORMAL"
-sudo apt-get install -y python-pip
-
 echo -e "$BLUE"'Install software-properties-common...'"$NORMAL"
 sudo apt-get install -y software-properties-common
 
-echo -e "$BLUE"'Download powerline-shell...'"$NORMAL"
-git clone https://github.com/b-ryan/powerline-shell
-cd powerline-shell || return
+echo -e "$BLUE"'Install python...'"$NORMAL"
+sudo add-apt-repository ppa:jonathonf/python-3.6
+sudo apt update
+sudo apt install python3.6
 
 echo -e "$BLUE"'Install powerline-shell...'"$NORMAL"
-python setup.py install
+pip install powerline-shell

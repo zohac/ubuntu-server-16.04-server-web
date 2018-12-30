@@ -71,7 +71,7 @@ case "$DIALOG_RESPONSE" in
         length=${#ARRAY_CHOICE[@]}
 
         # Use bash for loop
-        for (( i=0; i<$length; i++ ));
+        for (( i=0; i<"$length"; i++ ));
             do
                 source "$FULL_DIR"/dependencies/"${DEPENDENCIES[$i]}"_installation.sh ;
             done
