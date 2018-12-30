@@ -24,5 +24,8 @@ sudo apt-get install -y zip
 echo -e "$BLUE"'Install software-properties-common...'"$NORMAL"
 sudo apt-get install -y software-properties-common
 
+echo -e "$BLUE"'Install python-pip...'"$NORMAL"
+sudo apt install -y python-pip
+
 echo -e "$BLUE"'Install powerline-shell...'"$NORMAL"
-pip install powerline-shell
+sudo pip install powerline-shell
