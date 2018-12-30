@@ -3,4 +3,19 @@ language: bash
 dist: xenial
 
 script:
+    - dependancies/update_installation.sh
+    - dependancies/dependencies_installation.sh
+    - dependancies/apache2_installation.sh
+    - dependancies/mysql_installation.sh
+    - dependancies/php7.3_installation.sh
+    - dependancies/xdebug_installation.sh
+    - dependancies/composer_installation.sh
+    - dependancies/php-cs-fixer_installation.sh
+    - dependancies/php-code-sniffer_installation.sh
+    - dependancies/php-mess-detector_installation.sh
+    - dependancies/copy-paste-detector_installation.sh
+    - dependancies/samba_installation.sh
+    - dependancies/blackFire_installation.sh
+    - dependancies/zsh_installation.sh
+    - dependancies/cleaning_installation.sh
     - bash install.sh n
