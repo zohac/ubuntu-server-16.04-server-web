@@ -26,7 +26,9 @@ The script installs the following components:
 
 * GIT: The script requires GIT. [https://git-scm.com/](https://git-scm.com/)
 
-    sudo apt-get install git
+```bash
+sudo apt-get install git
+```
 
 ## Installation
 
@@ -37,11 +39,15 @@ Otherwise comment there with a #.
 
 You can also download the script source directly from the Git clone:
 
-    git clone https://github.com/zohac/ubuntu-server-16.04-server-web.git
+```bash
+git clone https://github.com/zohac/ubuntu-server-16.04-server-web.git
+```
 
 ### Run the script
 
-    bash ubuntu-server-16.04-server-web/install.sh
+```bash
+bash ubuntu-server-16.04-server-web/install.sh
+```
 
 ## After Reboot - Configure BlackFire
 
@@ -51,17 +57,23 @@ You can also download the script source directly from the Git clone:
 
 1. Configure your Blackfire credentials:
 
+    ```bash
     sudo blackfire-agent -register
+    ```
 
 2. After registering the agent, and whenever you modify its configuration, you have to restart its service:
 
+    ```bash
     sudo /etc/init.d/blackfire-agent restart
+    ```
 
 ### Installing the Blackfire CLI tool
 
 * Run the config command to initialize the client:
 
+    ```bash
     blackfire config
+    ```
 
 ## Issues
 
