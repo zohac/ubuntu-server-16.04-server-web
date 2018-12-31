@@ -3,11 +3,12 @@ language: bash
 dist: xenial
 
 env:
-    - RED="\e[31m"
-    - GREEN="\e[32m"
-    - YELLOW="\e[33m"
-    - BLUE="\e[34m"
-    - NORMAL="\e[39m"
+    global:
+        - RED="\e[31m"
+        - GREEN="\e[32m"
+        - YELLOW="\e[33m"
+        - BLUE="\e[34m"
+        - NORMAL="\e[39m"
 
 script:
     - bash dependencies/update_installation.sh
