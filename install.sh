@@ -7,6 +7,8 @@ YELLOW="\e[33m"
 BLUE="\e[34m"
 NORMAL="\e[39m"
 
+FULL_DIR=$PWD'/'$(dirname $0)
+
 # Retrieving parameters
 RESPONSE=''
 if [ "$1" ]; then
@@ -61,7 +63,6 @@ trap "rm -f $TEMP_FILE" 0 1 2 5 15
         "blackFire" "Solution de management de performance pour php" ON \
         "zsh" "Installation du shell zsh" ON \
         "cleaning" "Nettoyage de l'installation" ON 2> "$TEMP_FILE"
-
 DIALOG_RESPONSE="$?"
 CHOICE=$(cat "$TEMP_FILE")
 
@@ -75,7 +76,7 @@ case "$DIALOG_RESPONSE" in
         # Use bash for loop
         for (( i=0; i<"$length"; i++ ));
             do
-                source "$FULL_DIR"/dependencies/"${DEPENDENCIES[$i]}"_installation.sh ;
+                source "$FULL_DIR"/dependencies/"${ARRAY_CHOICE[$i]}"_installation.sh
             done
         ;;
     1)
