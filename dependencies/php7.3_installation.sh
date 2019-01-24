@@ -80,6 +80,12 @@ sudo apt-get install -y php-apcu
 echo -e "$BLUE"'Installation of PHP7.3-SQLITE3...'"$NORMAL"
 sudo apt-get install -y php7.3-sqlite3
 
+echo -e "$BLUE"'Installation of PHP7.3-intl...'"$NORMAL"
+sudo apt-get install -y php7.3-intl
+
+echo -e "$BLUE"'Installation of php-imagick...'"$NORMAL"
+sudo apt-get install -y php-imagick
+
 sudo a2enmod proxy_fcgi setenvif
 sudo a2enconf php7.3-fpm
 
