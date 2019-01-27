@@ -60,11 +60,12 @@ trap "rm -f $TEMP_FILE" 0 1 2 5 15
         "php-mess-detector" "PHP Mess Detector" ON \
         "copy-paste-detector" "Détecteur de code copier/coller" ON \
         "samba" "Partage de fichiers dans un réseau local" ON \
- #       "blackFire" "Solution de management de performance pour php" ON \
         "zsh" "Installation du shell zsh" ON \
         "cleaning" "Nettoyage de l'installation" ON 2> "$TEMP_FILE"
 DIALOG_RESPONSE="$?"
 CHOICE=$(cat "$TEMP_FILE")
+
+ #       "blackFire" "Solution de management de performance pour php" ON \
 
 case "$DIALOG_RESPONSE" in
     0)
