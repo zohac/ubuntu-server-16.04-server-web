@@ -18,6 +18,9 @@ sudo apt-get install -y apt-transport-https
 echo -e "$BLUE"'Install zip...'"$NORMAL"
 sudo apt-get install -y zip
 
+echo -e "$BLUE"'Install unzip...'"$NORMAL"
+sudo apt-get install -y unzip
+
 echo -e "$BLUE"'Install software-properties-common...'"$NORMAL"
 sudo apt-get install -y software-properties-common
 

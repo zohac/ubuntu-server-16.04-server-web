@@ -97,5 +97,8 @@ echo"extension=apcu.so" | tee -a /etc/php/7.2/mods-available/cache.ini
 # Configuration date
 sudo sed -i "s/;date.timezone =/date.timezone = Europe\/Paris/g" /etc/php/7.2/apache2/php.ini
 
+# Display errors
+sudo sed -i "s/display_errors = Off/display_errors = On/g" /etc/php/7.2/apache2/php.ini
+
 echo -e "$BLUE"'Apache2 restart...'"$NORMAL"
 sudo service apache2 restart

@@ -1,7 +1,7 @@
 #!/bin/bash
 # Version 0.1
 
-APACHE_LOG_DIR='${APACHE_LOG_DIR}'
+APACHE_LOG_DIR="${APACHE_LOG_DIR}"
 
 #
 # Installation apache2
@@ -16,7 +16,7 @@ echo -e "$NORMAL"
 
 sudo apt-get install -y apache2
 # Add rewrite module
-a2enmod rewrite
+sudo a2enmod rewrite
 sudo service apache2 restart
 
 # Si erreur 'Failed to enable APR_TCP_DEFER_ACCEPT'
