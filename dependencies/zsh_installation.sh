@@ -45,13 +45,13 @@ alias composer='/usr/local/bin/composer'
 #
 # PHP-CS-FIXER
 #
-alias php-cs-fixer='$HOME/.config/composer/vendor/bin/php-cs-fixer'
+alias php-cs-fixer='$HOME/.composer/vendor/bin/php-cs-fixer'
 
 #
 # PHP code sniffer
 #
-alias phpcs='$HOME/.config/composer/vendor/bin/phpcs'
-alias phpcbf='$HOME/.config/composer/vendor/bin/phpcbf'
+alias phpcs='$HOME/.composer/vendor/bin/phpcs'
+alias phpcbf='$HOME/.composer/vendor/bin/phpcbf'
 
 #
 # PHP Mess Detector

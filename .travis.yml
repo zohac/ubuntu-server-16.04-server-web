@@ -23,6 +23,6 @@ script:
     - bash dependencies/php-mess-detector_installation.sh
     - bash dependencies/copy-paste-detector_installation.sh
     - bash dependencies/samba_installation.sh
-    - bash dependencies/blackFire_installation.sh
+#    - bash dependencies/blackFire_installation.sh
     - bash dependencies/zsh_installation.sh
     - bash dependencies/cleaning_installation.sh

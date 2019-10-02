@@ -80,6 +80,12 @@ sudo apt-get install -y php-apcu
 echo -e "$BLUE"'Installation of PHP7.3-SQLITE3...'"$NORMAL"
 sudo apt-get install -y php7.3-sqlite3
 
+echo -e "$BLUE"'Installation of PHP7.3-intl...'"$NORMAL"
+sudo apt-get install -y php7.3-intl
+
+echo -e "$BLUE"'Installation of php-imagick...'"$NORMAL"
+sudo apt-get install -y php-imagick
+
 sudo a2enmod proxy_fcgi setenvif
 sudo a2enconf php7.3-fpm
 
@@ -90,6 +96,9 @@ echo"extension=apcu.so" | tee -a /etc/php/7.3/mods-available/cache.ini
 
 # Configuration date
 sudo sed -i "s/;date.timezone =/date.timezone = Europe\/Paris/g" /etc/php/7.3/apache2/php.ini
+
+# Display errors
+sudo sed -i "s/display_errors = Off/display_errors = On/g" /etc/php/7.3/apache2/php.ini
 
 echo -e "$BLUE"'Apache2 restart...'"$NORMAL"
 sudo service apache2 restart
