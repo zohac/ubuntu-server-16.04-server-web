@@ -80,6 +80,9 @@ sudo apt-get install -y php-apcu
 echo -e "$BLUE"'Installation of PHP7.2-SQLITE3...'"$NORMAL"
 sudo apt-get install -y php7.2-sqlite3
 
+echo -e "$BLUE"'Installation of PHP7.2-SQLITE3...'"$NORMAL"
+sudo apt-get install -y php7.2-sqlite3
+
 echo -e "$BLUE"'Installation of PHP7.2-intl...'"$NORMAL"
 sudo apt-get install -y php7.2-intl
 

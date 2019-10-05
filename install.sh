@@ -53,6 +53,7 @@ trap "rm -f $TEMP_FILE" 0 1 2 5 15
         "apache2" "Installation du serveur http" ON \
         "mysql" "Installation de la base de donnée" ON \
         "php7.2" "Installation de php7.2" ON \
+        "symfony" "Installation du binaire de symfony" ON \
         "xdebug" "Outil de debugage et profilage pour php" ON \
         "composer" "Manager de dépendance pour php" ON \
         "php-cs-fixer" "PHP Coding Standards Fixer" ON \
