@@ -15,6 +15,7 @@ script:
     - bash dependencies/dependencies_installation.sh
     - bash dependencies/apache2_installation.sh
     - bash dependencies/mysql_installation.sh
+    - bash dependencies/php7.2_installation.sh
     - bash dependencies/php7.3_installation.sh
     - bash dependencies/xdebug_installation.sh
     - bash dependencies/composer_installation.sh
@@ -24,5 +25,6 @@ script:
     - bash dependencies/copy-paste-detector_installation.sh
     - bash dependencies/samba_installation.sh
 #    - bash dependencies/blackFire_installation.sh
+    - bash dependencies/symfony_installation.sh
     - bash dependencies/zsh_installation.sh
     - bash dependencies/cleaning_installation.sh
