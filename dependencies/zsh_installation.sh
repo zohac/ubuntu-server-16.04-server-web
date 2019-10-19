@@ -63,6 +63,7 @@ alias phpmd='/usr/local/bin/phpmd.phar'
 #
 alias phpcpd='/usr/local/bin/phpcpd'" >> "$HOME"/.zshrc
 
+# shellcheck source=HOME/.zshrc
 source "$HOME"/.zshrc
 
 sudo chmod -R 755 "$HOME"/.oh-my-zsh

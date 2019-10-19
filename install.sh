@@ -7,7 +7,7 @@ YELLOW="\e[33m"
 BLUE="\e[34m"
 NORMAL="\e[39m"
 
-FULL_DIR=$PWD'/'$(dirname $0)
+FULL_DIR=$PWD'/'$(dirname "$0")
 
 # Retrieving parameters
 RESPONSE=''
@@ -42,8 +42,8 @@ echo -e "$BLUE"'Installation of Dialog...'"$NORMAL"
 sudo apt-get install -y dialog
 
 DIALOG="${DIALOG=dialog}"
-TEMP_FILE=$(tempfile 2>/dev/null) || TEMP_FILE=/tmp/test$$
-trap "rm -f $TEMP_FILE" 0 1 2 5 15
+TEMP_FILE=$(mktemp 2>/dev/null) || TEMP_FILE=/tmp/test$$
+trap 'rm -f '"$TEMP_FILE" 0 1 2 5 15
 
 "$DIALOG" --backtitle "Choisissez les composants à installer" \
         --title "Choisissez les composants à installer" --clear \
@@ -62,6 +62,7 @@ trap "rm -f $TEMP_FILE" 0 1 2 5 15
         "copy-paste-detector" "Détecteur de code copier/coller" ON \
         "samba" "Partage de fichiers dans un réseau local" ON \
         "zsh" "Installation du shell zsh" ON \
+        "add-virtualhost" "Installation du script d'ajout de virtualhost pour apache2" ON \
         "cleaning" "Nettoyage de l'installation" ON 2> "$TEMP_FILE"
 DIALOG_RESPONSE="$?"
 CHOICE=$(cat "$TEMP_FILE")
@@ -78,6 +79,7 @@ case "$DIALOG_RESPONSE" in
         # Use bash for loop
         for (( i=0; i<"$length"; i++ ));
             do
+                # shellcheck source=SCRIPTDIR/dependencies/*_installation.sh
                 source "$FULL_DIR"/dependencies/"${ARRAY_CHOICE[$i]}"_installation.sh
             done
         ;;
