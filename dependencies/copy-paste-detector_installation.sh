@@ -28,8 +28,6 @@ alias phpcpd='/usr/local/bin/phpcpd'" >>"$HOME"'/.bashrc'
 # shellcheck source=$HOME/.bashrc
 source "$HOME"'/.bashrc'
 
-exit 0
-
 # example of use:
 #
 # php-cs-fixer fix src --rules=@Symfony,-@PSR1,-@PSR2

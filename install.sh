@@ -43,11 +43,12 @@ sudo apt-get install -y dialog
 
 DIALOG="${DIALOG=dialog}"
 TEMP_FILE=$(mktemp 2>/dev/null) || TEMP_FILE=/tmp/test$$
-trap 'rm -f '"$TEMP_FILE" 0 1 2 5 15
+# https://mywiki.wooledge.org/SignalTrap#Traps.2C_or_Signal_Handlers
+trap 'rm -f '"$TEMP_FILE" EXIT HUP INT SIGTRAP TERM
 
 "$DIALOG" --backtitle "Choisissez les composants à installer" \
         --title "Choisissez les composants à installer" --clear \
-        --checklist "Selectionner les composants avec la barre espace" 25 80 15 \
+        --checklist "Selectionner les composants avec la barre espace" 25 80 16 \
         "update" "Mise à jour" ON \
         "dependencies" "Installation des dépendances" ON \
         "apache2" "Installation du serveur http" ON \
@@ -104,7 +105,7 @@ while :
 do
 
     if [ "$RESPONSE" = '' ]; then
-        read -p "You should restart [Y/n] ? " RESPONSE
+        read -pr "You should restart [Y/n] ? " RESPONSE
     fi
 
     case "$RESPONSE" in

@@ -102,5 +102,3 @@ sudo sed -i "s/display_errors = Off/display_errors = On/g" /etc/php/7.3/apache2/
 
 echo -e "$BLUE"'Apache2 restart...'"$NORMAL"
 sudo service apache2 restart
-
-exit 0

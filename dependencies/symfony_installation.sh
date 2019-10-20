@@ -17,5 +17,3 @@ echo -e "$NORMAL"
 
 echo -e "$BLUE"'Symfony Binary installation...'"$NORMAL"
 sudo wget https://get.symfony.com/cli/installer -O - | bash
-
-exit 0

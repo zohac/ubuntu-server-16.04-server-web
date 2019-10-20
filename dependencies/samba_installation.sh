@@ -28,5 +28,3 @@ force user = $USER" >> /etc/samba/smb.conf
 eof
 
 sudo service smbd restart
-
-exit 0

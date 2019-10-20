@@ -51,5 +51,3 @@ alias composer='/usr/local/bin/composer'" >>"$HOME"'/.bashrc'
 
 # shellcheck source=$HOME/.bashrc
 source "$HOME"'/.bashrc'
-
-exit 0

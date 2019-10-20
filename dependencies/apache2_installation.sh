@@ -50,5 +50,3 @@ sed -i "s/VIRTUAL_HOST_PATH/$VIRTUAL_HOST_PATH/g" "$HOME"'/000-default.conf'
 
 sudo apache2ctl configtest
 sudo service apache2 reload
-
-exit 0

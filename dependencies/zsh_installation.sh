@@ -66,5 +66,3 @@ alias phpcpd='/usr/local/bin/phpcpd'" >>"$HOME"'/.zshrc'
 source "$HOME"'/.zshrc'
 
 sudo chmod -R 755 "$HOME"'/.oh-my-zsh'
-
-exit 0
