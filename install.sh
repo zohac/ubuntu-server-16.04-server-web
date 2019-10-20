@@ -7,7 +7,7 @@ YELLOW="\e[33m"
 BLUE="\e[34m"
 NORMAL="\e[39m"
 
-FULL_DIR=$PWD'/'$(dirname $0)
+FULL_DIR=$PWD'/'$(dirname "$0")
 
 # Retrieving parameters
 RESPONSE=''
@@ -42,12 +42,13 @@ echo -e "$BLUE"'Installation of Dialog...'"$NORMAL"
 sudo apt-get install -y dialog
 
 DIALOG="${DIALOG=dialog}"
-TEMP_FILE=$(tempfile 2>/dev/null) || TEMP_FILE=/tmp/test$$
-trap "rm -f $TEMP_FILE" 0 1 2 5 15
+TEMP_FILE=$(mktemp 2>/dev/null) || TEMP_FILE=/tmp/test$$
+# https://mywiki.wooledge.org/SignalTrap#Traps.2C_or_Signal_Handlers
+trap 'rm -f '"$TEMP_FILE" EXIT HUP INT SIGTRAP TERM
 
 "$DIALOG" --backtitle "Choisissez les composants à installer" \
         --title "Choisissez les composants à installer" --clear \
-        --checklist "Selectionner les composants avec la barre espace" 25 80 15 \
+        --checklist "Selectionner les composants avec la barre espace" 25 80 16 \
         "update" "Mise à jour" ON \
         "dependencies" "Installation des dépendances" ON \
         "apache2" "Installation du serveur http" ON \
@@ -62,6 +63,7 @@ trap "rm -f $TEMP_FILE" 0 1 2 5 15
         "copy-paste-detector" "Détecteur de code copier/coller" ON \
         "samba" "Partage de fichiers dans un réseau local" ON \
         "zsh" "Installation du shell zsh" ON \
+        "add-virtualhost" "Installation du script d'ajout de virtualhost pour apache2" ON \
         "cleaning" "Nettoyage de l'installation" ON 2> "$TEMP_FILE"
 DIALOG_RESPONSE="$?"
 CHOICE=$(cat "$TEMP_FILE")
@@ -78,6 +80,7 @@ case "$DIALOG_RESPONSE" in
         # Use bash for loop
         for (( i=0; i<"$length"; i++ ));
             do
+                # shellcheck source=SCRIPTDIR/dependencies/*_installation.sh
                 source "$FULL_DIR"/dependencies/"${ARRAY_CHOICE[$i]}"_installation.sh
             done
         ;;

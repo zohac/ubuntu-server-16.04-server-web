@@ -18,8 +18,10 @@ echo "
 #
 # PHP-CS-FIXER
 #
-alias php-cs-fixer='$HOME/.composer/vendor/bin/php-cs-fixer'" >> "$HOME"/.bashrc
-source "$HOME"/.bashrc
+alias php-cs-fixer='$HOME/.composer/vendor/bin/php-cs-fixer'" >>"$HOME"'/.bashrc'
+
+# shellcheck source=$HOME/.bashrc
+source "$HOME"'/.bashrc'
 
 # example of use:
 #

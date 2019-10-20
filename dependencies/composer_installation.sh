@@ -22,11 +22,10 @@ echo -e "$BLUE"'Calculating the signature...'"$NORMAL"
 ACTUAL_SIGNATURE="$(php -r "echo hash_file('sha384', 'composer-setup.php');")"
 
 echo -e "$BLUE"'Test of the signature...'"$NORMAL"
-if [ "$EXPECTED_SIGNATURE" != "$ACTUAL_SIGNATURE" ]
-then
-    >&2 echo -e "$RED"'ERROR: Invalid installer signature'
-    rm composer-setup.php
-    exit 1
+if [ "$EXPECTED_SIGNATURE" != "$ACTUAL_SIGNATURE" ]; then
+  echo >&2 -e "$RED"'ERROR: Invalid installer signature'
+  rm composer-setup.php
+  exit 1
 fi
 
 echo -e "$BLUE"'Installation of composer...'"$NORMAL"
@@ -40,7 +39,7 @@ composer -V
 
 # Test of the presence of the directory .composer
 if [ ! -d "$HOME"/.composer ]; then
-    mkdir "$HOME"/.composer
+  mkdir "$HOME"/.composer
 fi
 sudo chown -R "$USER":"$USER" "$HOME"/.composer
 
@@ -48,7 +47,7 @@ echo "
 #
 # Composer
 #
-alias composer='/usr/local/bin/composer'" >> "$HOME"/.bashrc
-source "$HOME"/.bashrc
+alias composer='/usr/local/bin/composer'" >>"$HOME"'/.bashrc'
 
-# exit $RESULT
+# shellcheck source=$HOME/.bashrc
+source "$HOME"'/.bashrc'

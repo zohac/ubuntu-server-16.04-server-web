@@ -1,11 +1,11 @@
 # Installing an Apache2/PHP7.3/MySQL web server
 
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/1fa2c6abe7a14379b144a1a026a5b426)](https://www.codacy.com/app/zohac/ubuntu-server-16.04-server-web?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=zohac/ubuntu-server-16.04-server-web&amp;utm_campaign=Badge_Grade)
-[![Build Status](https://travis-ci.org/zohac/ubuntu-server-16.04-server-web.svg?branch=master)](https://travis-ci.org/zohac/ubuntu-server-16.04-server-web)
+[![Build Status](https://travis-ci.org/zohac/ubuntu-server-web.svg?branch=master)](https://travis-ci.org/zohac/ubuntu-server-web)
 
 Installing Apache2/PHP7.3/MySQL for a development web server on a ubuntu server.
 
-Script tested on linux distribution [Ubuntu 16.04 LTS](https://www.ubuntu.com/download/alternative-downloads).
+Script tested on linux distribution [Ubuntu 16.04 LTS](https://www.ubuntu.com/download/alternative-downloads) and [Ubuntu 18.04 LTS](https://www.ubuntu.com/download/alternative-downloads).
 
 The script installs the following components:
 
@@ -32,21 +32,18 @@ sudo apt-get install git
 
 ## Installation
 
-If you want to change the hostname, change the name of the MY_HOSTNAME variable.
-Otherwise comment there with a #.
-
 ### Git Clone
 
 You can also download the script source directly from the Git clone:
 
 ```bash
-git clone https://github.com/zohac/ubuntu-server-16.04-server-web.git
+git clone https://github.com/zohac/ubuntu-server-web.git
 ```
 
 ### Run the script
 
 ```bash
-bash ubuntu-server-16.04-server-web/install.sh
+bash ubuntu-server-web/install.sh
 ```
 
 ## After Reboot - Configure BlackFire
@@ -57,23 +54,23 @@ bash ubuntu-server-16.04-server-web/install.sh
 
 1. Configure your Blackfire credentials:
 
-    ```bash
-    sudo blackfire-agent -register
-    ```
+```bash
+sudo blackfire-agent -register
+```
 
 2. After registering the agent, and whenever you modify its configuration, you have to restart its service:
 
-    ```bash
-    sudo /etc/init.d/blackfire-agent restart
-    ```
+```bash
+sudo /etc/init.d/blackfire-agent restart
+```
 
 ### Installing the Blackfire CLI tool
 
 * Run the config command to initialize the client:
 
-    ```bash
-    blackfire config
-    ```
+```bash
+blackfire config
+```
 
 ## Issues
 

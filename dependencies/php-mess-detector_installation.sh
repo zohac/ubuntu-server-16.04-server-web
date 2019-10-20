@@ -23,8 +23,10 @@ echo "
 # PHP Mess Detector
 #
 alias phpmd='/usr/local/bin/phpmd.phar'
-alias phpmd-src='/usr/local/bin/phpmd.phar src html codesize.xml --reportfile phpmd.html'" >> "$HOME"/.bashrc
-source "$HOME"/.bashrc
+alias phpmd-src='/usr/local/bin/phpmd.phar src html codesize.xml --reportfile phpmd.html'" >>"$HOME"'/.bashrc'
+
+# shellcheck source=$HOME/.bashrc
+source "$HOME"'/.bashrc'
 
 # example of use:
 #
