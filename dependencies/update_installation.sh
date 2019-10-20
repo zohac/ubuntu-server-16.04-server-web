@@ -20,5 +20,5 @@ sudo apt-get -y upgrade
 
 exit 0
 
-# Liste des paquets pouvant Ãªtre mis Ã  jour
+# Liste des paquets pouvant être mis à jour
 # apt list --upgradable
