@@ -1,7 +1,7 @@
 # Installing an Apache2/PHP7.3/MySQL web server
 
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/1fa2c6abe7a14379b144a1a026a5b426)](https://www.codacy.com/app/zohac/ubuntu-server-16.04-server-web?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=zohac/ubuntu-server-16.04-server-web&amp;utm_campaign=Badge_Grade)
-[![Build Status](https://travis-ci.org/zohac/ubuntu-server-16.04-server-web.svg?branch=master)](https://travis-ci.org/zohac/ubuntu-server-16.04-server-web)
+[![Build Status](https://travis-ci.org/zohac/ubuntu-server-web.svg?branch=master)](https://travis-ci.org/zohac/ubuntu-server-web)
 
 Installing Apache2/PHP7.3/MySQL for a development web server on a ubuntu server.
 
@@ -37,13 +37,13 @@ sudo apt-get install git
 You can also download the script source directly from the Git clone:
 
 ```bash
-git clone https://github.com/zohac/ubuntu-server-16.04-server-web.git
+git clone https://github.com/zohac/ubuntu-server-web.git
 ```
 
 ### Run the script
 
 ```bash
-bash ubuntu-server-16.04-server-web/install.sh
+bash ubuntu-server-web/install.sh
 ```
 
 ## After Reboot - Configure BlackFire
