@@ -105,7 +105,7 @@ while :
 do
 
     if [ "$RESPONSE" = '' ]; then
-        read -pr "You should restart [Y/n] ? " RESPONSE
+        read -p "You should restart [Y/n] ? " RESPONSE
     fi
 
     case "$RESPONSE" in
