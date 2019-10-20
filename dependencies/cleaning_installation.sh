@@ -18,5 +18,7 @@ sudo apt-get -y autoremove --purge
 sudo apt-get -y autoclean
 
 if [ -d "ubuntu-server-16.04-server-web" ]; then
-    sudo rm -r ubuntu-server-16.04-server-web
+  sudo rm -r ubuntu-server-16.04-server-web
 fi
+
+exit 0

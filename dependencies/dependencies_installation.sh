@@ -32,3 +32,5 @@ sudo pip install powerline-shell
 
 echo -e "$BLUE"'Install git-flow...'"$NORMAL"
 sudo apt-get install -y git-flow
+
+exit 0

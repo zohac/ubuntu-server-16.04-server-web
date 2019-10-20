@@ -88,5 +88,3 @@ alias add-virtualhost='bash $HOME/.inc/script/add_virtualhost.sh'" >> "$HOME"'/.
 
 # shellcheck source=HOME/.zshrc
 source "$HOME"'/.zshrc'
-
-exit 0;

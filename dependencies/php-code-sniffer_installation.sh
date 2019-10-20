@@ -19,8 +19,10 @@ echo "
 # PHP code sniffer
 #
 alias phpcs='$HOME/.composer/vendor/bin/phpcs'
-alias phpcbf='$HOME/.composer/vendor/bin/phpcbf'" >> "$HOME"/.bashrc
-source "$HOME"/.bashrc
+alias phpcbf='$HOME/.composer/vendor/bin/phpcbf'" >>"$HOME"'/.bashrc'
+
+# shellcheck source=$HOME/.bashrc
+source "$HOME"'/.bashrc'
 
 # example of use:
 #

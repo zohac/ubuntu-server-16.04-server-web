@@ -38,7 +38,7 @@ echo ''
 echo -e "$NORMAL"
 
 if [ ! -d VIRTUAL_HOST_PATH ]; then
-    mkdir VIRTUAL_HOST_PATH
+  mkdir VIRTUAL_HOST_PATH
 fi
 
 sudo chown -R "$USER":www-data VIRTUAL_HOST_PATH
@@ -50,3 +50,5 @@ sed -i "s/VIRTUAL_HOST_PATH/$VIRTUAL_HOST_PATH/g" "$HOME"'/000-default.conf'
 
 sudo apache2ctl configtest
 sudo service apache2 reload
+
+exit 0

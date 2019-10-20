@@ -26,5 +26,6 @@ script:
     - bash dependencies/samba_installation.sh
 #    - bash dependencies/blackFire_installation.sh
     - bash dependencies/symfony_installation.sh
+    - bash dependencies/add-virtualhost_installation.sh
     - bash dependencies/zsh_installation.sh
     - bash dependencies/cleaning_installation.sh

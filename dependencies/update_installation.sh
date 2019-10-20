@@ -18,5 +18,7 @@ sudo apt-get -y update
 echo -e "$BLUE"'Upgrade...'"$NORMAL"
 sudo apt-get -y upgrade
 
-# Liste des paquets pouvant être mis à jour
+exit 0
+
+# Liste des paquets pouvant Ãªtre mis Ã  jour
 # apt list --upgradable

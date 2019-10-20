@@ -23,8 +23,12 @@ echo "
 #
 # PHP Copy/Paste Detector
 #
-alias phpcpd='/usr/local/bin/phpcpd'" >> "$HOME"/.bashrc
-source "$HOME"/.bashrc
+alias phpcpd='/usr/local/bin/phpcpd'" >>"$HOME"'/.bashrc'
+
+# shellcheck source=$HOME/.bashrc
+source "$HOME"'/.bashrc'
+
+exit 0
 
 # example of use:
 #

@@ -25,3 +25,5 @@ sudo apt-get install -y dovecot-imapd
 
 echo -e "$BLUE"'Install dovecot-pop3d...'"$NORMAL"
 sudo apt-get install -y dovecot-pop3d
+
+exit 0

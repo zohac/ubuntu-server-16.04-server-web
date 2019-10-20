@@ -54,23 +54,23 @@ bash ubuntu-server-16.04-server-web/install.sh
 
 1. Configure your Blackfire credentials:
 
-    ```bash
-    sudo blackfire-agent -register
-    ```
+```bash
+sudo blackfire-agent -register
+```
 
 2. After registering the agent, and whenever you modify its configuration, you have to restart its service:
 
-    ```bash
-    sudo /etc/init.d/blackfire-agent restart
-    ```
+```bash
+sudo /etc/init.d/blackfire-agent restart
+```
 
 ### Installing the Blackfire CLI tool
 
 * Run the config command to initialize the client:
 
-    ```bash
-    blackfire config
-    ```
+```bash
+blackfire config
+```
 
 ## Issues
 
