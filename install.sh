@@ -61,7 +61,7 @@ trap 'rm -f '"$TEMP_FILE" EXIT HUP INT SIGTRAP TERM
         "php-code-sniffer" "PHP Code sniffer" ON \
         "php-mess-detector" "PHP Mess Detector" ON \
         "copy-paste-detector" "Détecteur de code copier/coller" ON \
-        "samba" "Partage de fichiers dans un réseau local" ON \
+        "samba" "Partage de fichiers dans un réseau local" OFF \
         "zsh" "Installation du shell zsh" ON \
         "add-virtualhost" "Installation du script d'ajout de virtualhost pour apache2" ON \
         "cleaning" "Nettoyage de l'installation" ON 2> "$TEMP_FILE"
