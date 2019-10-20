@@ -29,7 +29,7 @@ echo '
 ;;;;;;;;;;;;;;;;;;;;
 extension=xdebug.so
 
-xdebug.remote_enable = On' >> /etc/php/7.3/apache2/php.ini
+xdebug.remote_enable = On' >> /etc/php/7.2/apache2/php.ini
 
 eof
 
