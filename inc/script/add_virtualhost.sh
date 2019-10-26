@@ -71,20 +71,5 @@ done
 sudo apache2ctl configtest
 sudo service apache2 reload
 
-echo "
-#
-# Add virtualhost
-#
-alias add-virtualhost='bash $HOME/.inc/script/add_virtualhost.sh'" >> "$HOME"'/.bashrc'
-
-# shellcheck source=HOME/.bashrc
-source "$HOME"'/.bashrc'
-
-echo "
-#
-# Add virtualhost
-#
-alias add-virtualhost='bash $HOME/.inc/script/add_virtualhost.sh'" >> "$HOME"'/.zshrc'
-
 # shellcheck source=HOME/.zshrc
 source "$HOME"'/.zshrc'
