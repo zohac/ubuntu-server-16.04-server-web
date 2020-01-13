@@ -68,6 +68,7 @@ do
 done
 
 sudo apache2ctl configtest
+sudo a2ensite "$HOSTNAME"
 sudo service apache2 reload
 
 # shellcheck source=HOME/.zshrc

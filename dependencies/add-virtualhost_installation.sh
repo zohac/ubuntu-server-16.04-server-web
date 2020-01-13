@@ -20,3 +20,6 @@ echo "
 # Add virtualhost
 #
 alias add-virtualhost='bash $HOME/.inc/script/add_virtualhost.sh'" >> "$HOME"'/.zshrc'
+
+# shellcheck source=HOME/.zshrc
+source "$HOME"'/.zshrc'
