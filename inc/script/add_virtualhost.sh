@@ -4,15 +4,15 @@
 while :
 do
 
-    read -pr "Voulez-vous ajouter un hostname (www.exemple.com) [Y/n] ? " RESPONSE
+    read -p "Voulez-vous ajouter un hostname (www.exemple.com) [Y/n] ? " RESPONSE
 
     case "$RESPONSE" in
         N|n)
             break
         ;;
         Y|y)
-            read -pr "Nom du hostname (www.exemple.com) : " HOSTNAME
-            read -pr "Path du virtualhost 'DocumentRoot /dir/to/index.html' : " VIRTUAL_HOST_PATH
+            read -p "Nom du hostname (www.exemple.com) : " HOSTNAME
+            read -p "Path du virtualhost 'DocumentRoot /dir/to/index.html' : " VIRTUAL_HOST_PATH
 
             sudo cp "$HOME/.inc/templates/apache2.conf" "/etc/apache2/sites-available/$HOSTNAME.conf"
 
@@ -30,14 +30,14 @@ do
     FILE="/mnt/c/windows/system32/wsl.exe"
     if [[ -f "$FILE" ]]; then
 
-        read -pr "Utilisez-vous le wsl de windows 10 [Y/n] ? " RESPONSE
+        read -r "Utilisez-vous le wsl de windows 10 [Y/n] ? " RESPONSE
 
         case "$RESPONSE" in
             N|n)
                 break
             ;;
             Y|y)
-                read -pr "Voulez-vous ajouter $HOSTNAME à votre fichier host [Y/n] ? " RESPONSE
+                read -p "Voulez-vous ajouter $HOSTNAME à votre fichier host [Y/n] ? " RESPONSE
 
                 case "$RESPONSE" in
                     N|n)
@@ -66,7 +66,6 @@ do
         esac
     fi
 done
-
 
 sudo apache2ctl configtest
 sudo service apache2 reload

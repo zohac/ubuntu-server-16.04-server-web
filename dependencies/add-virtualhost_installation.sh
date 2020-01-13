@@ -4,7 +4,7 @@
 FULL_DIR=$PWD'/'$(dirname "$0")
 
 echo -e "$BLUE"'Installing the script...'"$NORMAL"
-cp -r "$FULL_DIR"'/../inc/' "$HOME"'/.inc/'
+cp -r "$FULL_DIR"'/inc/' "$HOME"'/.inc/'
 
 echo "
 #
