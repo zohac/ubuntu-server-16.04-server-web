@@ -1,6 +1,9 @@
 #!/bin/bash
 # Version 0.1
 
+RED="\e[31m"
+NORMAL="\e[39m"
+
 while :
 do
 
@@ -12,12 +15,12 @@ do
         ;;
         Y|y)
             read -p "Nom du hostname (www.exemple.com) : " HOSTNAME
-            read -p "Path du virtualhost 'DocumentRoot /dir/to/index.html' : " VIRTUAL_HOST_PATH
+            read -rp "Path du virtualhost 'DocumentRoot /dir/to/index.html' : " VIRTUAL_HOST_PATH
 
             sudo cp "$HOME/.inc/templates/apache2.conf" "/etc/apache2/sites-available/$HOSTNAME.conf"
 
-            sed -i "s/# ServerName www.example.com/ServerName $HOSTNAME/g" "/etc/apache2/sites-available/$HOSTNAME.conf"
-            sed -i "s/VIRTUAL_HOST_PATH/$VIRTUAL_HOST_PATH/g" "/etc/apache2/sites-available/$HOSTNAME.conf"
+            sudo sed -i "s/# ServerName www.example.com/ServerName $HOSTNAME/g" "/etc/apache2/sites-available/$HOSTNAME.conf"
+            sudo sed -i "s~VIRTUAL_HOST_PATH~$VIRTUAL_HOST_PATH~g" "/etc/apache2/sites-available/$HOSTNAME.conf"
 
             break
         ;;
