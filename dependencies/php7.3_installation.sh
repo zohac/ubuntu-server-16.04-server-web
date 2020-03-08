@@ -87,6 +87,7 @@ echo -e "$BLUE"'Installation of php-imagick...'"$NORMAL"
 sudo apt-get install -y php-imagick
 
 sudo a2enmod proxy_fcgi setenvif
+sudo a2enmod actions alias proxy_fcgi fcgid
 sudo a2enconf php7.3-fpm
 
 echo -e "$BLUE"'Installation of APCU...'"$NORMAL"

@@ -54,6 +54,7 @@ trap 'rm -f '"$TEMP_FILE" EXIT HUP INT SIGTRAP TERM
         "apache2" "Installation du serveur http" ON \
         "mysql" "Installation de la base de donnée" ON \
         "php7.2" "Installation de php7.2" ON \
+        "php7.3" "Installation de php7.3" ON \
         "symfony" "Installation du binaire de symfony" ON \
         "xdebug" "Outil de debugage et profilage pour php" ON \
         "composer" "Manager de dépendance pour php" ON \

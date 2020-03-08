@@ -14,8 +14,14 @@ echo ''
 echo ''
 echo -e "$NORMAL"
 
+echo -e "$BLUE"'Installation of apache2...'"$NORMAL"
 sudo apt-get install -y apache2
+
+echo -e "$BLUE"'Installation of libapache2-mod-fcgid for php-fpm...'"$NORMAL"
+sudo apt-get install libapache2-mod-fcgid
+
 # Add rewrite module
+echo -e "$BLUE"'Configuration of apache2...'"$NORMAL"
 sudo a2enmod rewrite
 sudo service apache2 restart
 

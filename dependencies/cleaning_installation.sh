@@ -17,6 +17,6 @@ sudo apt-get -y upgrade
 sudo apt-get -y autoremove --purge
 sudo apt-get -y autoclean
 
-if [ -d "ubuntu-server-16.04-server-web" ]; then
-  sudo rm -r ubuntu-server-16.04-server-web
+if [ -d "ubuntu-server-web" ]; then
+  sudo rm -r ubuntu-server-web
 fi
