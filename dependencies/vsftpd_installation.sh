@@ -37,7 +37,7 @@ sudo htpasswd -cd /etc/vsftpd/ftpd.passwd "$USERNAME"
 
 sudo mv /etc/pam.d/vsftpd /etc/pam.d/vsftpd.old
 sudo cat /etc/pam.d/vsftpd
-sudo echo "auth required pam_pwdfile.so pwdfile /etc/vsftpd/ftpd.passwd
-account required pam_permit.so" >> '/etc/pam.d/vsftpd'
+echo "auth required pam_pwdfile.so pwdfile /etc/vsftpd/ftpd.passwd
+account required pam_permit.so" | sudo tee -a '/etc/pam.d/vsftpd' > /dev/null
 
 sudo useradd --home /home/vsftpd --gid www-data -m --shell /bin/false vsftpd
