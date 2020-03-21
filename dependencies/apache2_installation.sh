@@ -14,8 +14,14 @@ echo ''
 echo ''
 echo -e "$NORMAL"
 
+echo -e "$BLUE"'Installation of apache2...'"$NORMAL"
 sudo apt-get install -y apache2
+
+echo -e "$BLUE"'Installation of libapache2-mod-fcgid for php-fpm...'"$NORMAL"
+sudo apt-get install libapache2-mod-fcgid
+
 # Add rewrite module
+echo -e "$BLUE"'Configuration of apache2...'"$NORMAL"
 sudo a2enmod rewrite
 sudo service apache2 restart
 
@@ -37,11 +43,11 @@ echo ''
 echo ''
 echo -e "$NORMAL"
 
-if [ ! -d VIRTUAL_HOST_PATH ]; then
-  mkdir VIRTUAL_HOST_PATH
+if [ ! -d "$VIRTUAL_HOST_PATH" ]; then
+  mkdir "$VIRTUAL_HOST_PATH"
 fi
 
-sudo chown -R "$USER":www-data VIRTUAL_HOST_PATH
+sudo chown -R "$USER":www-data "$VIRTUAL_HOST_PATH"
 
 sudo mv /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-available/000-default.conf.old
 sudo cp /inc/templates/apache2.conf /etc/apache2/sites-available/000-default.conf

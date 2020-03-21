@@ -19,4 +19,4 @@ echo -e "$BLUE"'Symfony Binary installation...'"$NORMAL"
 sudo wget https://get.symfony.com/cli/installer -O - | bash
 
 echo -e "$BLUE"'Install symfony globally on your system...'"$NORMAL"
-sudo mv /home/zohac/.symfony/bin/symfony /usr/local/bin/symfony
+sudo mv /home/"$USER"/.symfony/bin/symfony /usr/local/bin/symfony
