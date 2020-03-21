@@ -28,7 +28,7 @@ guest_enable=YES
 virtual_use_local_privs=YES
 pam_service_name=vsftpd
 nopriv_user=vsftpd
-guest_username=vsftpd" >> '/etc/vsftpd.conf'
+guest_username=vsftpd" >>'/etc/vsftpd.conf'
 
 sudo mkdir /etc/vsftpd
 
@@ -38,6 +38,6 @@ sudo htpasswd -cd /etc/vsftpd/ftpd.passwd "$USERNAME"
 sudo mv /etc/pam.d/vsftpd /etc/pam.d/vsftpd.old
 sudo cat /etc/pam.d/vsftpd
 echo "auth required pam_pwdfile.so pwdfile /etc/vsftpd/ftpd.passwd
-account required pam_permit.so" | sudo tee -a '/etc/pam.d/vsftpd' > /dev/null
+account required pam_permit.so" | sudo tee -a '/etc/pam.d/vsftpd' >/dev/null
 
 sudo useradd --home /home/vsftpd --gid www-data -m --shell /bin/false vsftpd

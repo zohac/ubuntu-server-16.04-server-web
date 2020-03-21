@@ -3,29 +3,29 @@ language: bash
 dist: xenial
 
 env:
-    global:
-        - RED="\e[31m"
-        - GREEN="\e[32m"
-        - YELLOW="\e[33m"
-        - BLUE="\e[34m"
-        - NORMAL="\e[39m"
+  global:
+    - RED="\e[31m"
+    - GREEN="\e[32m"
+    - YELLOW="\e[33m"
+    - BLUE="\e[34m"
+    - NORMAL="\e[39m"
 
 script:
-    - bash dependencies/update_installation.sh
-    - bash dependencies/dependencies_installation.sh
-    - bash dependencies/apache2_installation.sh
-    - bash dependencies/mysql_installation.sh
-    - bash dependencies/php7.2_installation.sh
-    - bash dependencies/php7.3_installation.sh
-    - bash dependencies/xdebug_installation.sh
-    - bash dependencies/composer_installation.sh
-    - bash dependencies/php-cs-fixer_installation.sh
-    - bash dependencies/php-code-sniffer_installation.sh
-    - bash dependencies/php-mess-detector_installation.sh
-    - bash dependencies/copy-paste-detector_installation.sh
-    - bash dependencies/samba_installation.sh
-#    - bash dependencies/blackFire_installation.sh
-    - bash dependencies/symfony_installation.sh
-    - bash dependencies/add-virtualhost_installation.sh
-    - bash dependencies/zsh_installation.sh
-    - bash dependencies/cleaning_installation.sh
+  - bash dependencies/update_installation.sh
+  - bash dependencies/dependencies_installation.sh
+  - bash dependencies/apache2_installation.sh
+  - bash dependencies/mysql_installation.sh
+  - bash dependencies/php7.2_installation.sh
+  - bash dependencies/php7.3_installation.sh
+  - bash dependencies/xdebug_installation.sh
+  - bash dependencies/composer_installation.sh
+  - bash dependencies/php-cs-fixer_installation.sh
+  - bash dependencies/php-code-sniffer_installation.sh
+  - bash dependencies/php-mess-detector_installation.sh
+  - bash dependencies/copy-paste-detector_installation.sh
+  - bash dependencies/samba_installation.sh
+  #    - bash dependencies/blackFire_installation.sh
+  - bash dependencies/symfony_installation.sh
+  - bash dependencies/add-virtualhost_installation.sh
+  - bash dependencies/zsh_installation.sh
+  - bash dependencies/cleaning_installation.sh

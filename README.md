@@ -5,7 +5,7 @@
 
 Installing Apache2/PHP7.3/MySQL for a development web server on a ubuntu server.
 
-Script tested on linux distribution [Ubuntu 16.04 LTS](https://www.ubuntu.com/download/alternative-downloads) and [Ubuntu 18.04 LTS](https://www.ubuntu.com/download/alternative-downloads).
+Script tested on linux distribution [Ubuntu 18.04 LTS](https://www.ubuntu.com/download/alternative-downloads).
 
 The script installs the following components:
 

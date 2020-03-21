@@ -1,7 +1,6 @@
 #!/bin/bash
 # Version 0.1
 
-
 echo ''
 echo -e "$GREEN"'###########################################'
 echo -e "$GREEN"'#           vsftpd installation           #'
