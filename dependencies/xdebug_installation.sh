@@ -12,25 +12,16 @@ echo ''
 echo ''
 echo -e "$NORMAL"
 
-sudo pecl install xdebug
+echo -e "$BLUE"'Installation of php-xdebug...'"$NORMAL"
+sudo apt-get install php-xdebug
 
-# setup Xdebug
-#sudo -s <<eof
-# echo '
-#xdebug.show_error_trace = 1
-#' >> /etc/php/7.2/mods-available/xdebug.ini
-#eof
-
+echo -e "$BLUE"'configuration of php xdebug on apache2...'"$NORMAL"
 sudo -s <<eof
+
 echo '
 
-;;;;;;;;;;;;;;;;;;;;
-;      xdebug      ;
-;;;;;;;;;;;;;;;;;;;;
-extension=xdebug.so
-
-xdebug.remote_enable = On' >> /etc/php/7.2/apache2/php.ini
+[XDebug]
+xdebug.remote_enable = 1
+xdebug.remote_autostart = 1' >> /etc/php/7.3/apache2/php.ini
 
 eof
-
-sudo service apache2 restart
