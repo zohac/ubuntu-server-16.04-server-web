@@ -55,6 +55,7 @@ trap 'rm -f '"$TEMP_FILE" EXIT HUP INT SIGTRAP TERM
 "mysql" "Installation de la base de donnée" ON \
 "php7.2" "Installation de php7.2" ON \
 "php7.3" "Installation de php7.3" ON \
+"php7.4" "Installation de php7.4" ON \
 "symfony" "Installation du binaire de symfony" ON \
 "xdebug" "Outil de debugage et profilage pour php" ON \
 "composer" "Manager de dépendance pour php" ON \
@@ -64,6 +65,8 @@ trap 'rm -f '"$TEMP_FILE" EXIT HUP INT SIGTRAP TERM
 "copy-paste-detector" "Détecteur de code copier/coller" ON \
 "samba" "Partage de fichiers dans un réseau local" OFF \
 "zsh" "Installation du shell zsh" ON \
+"nodejs" "Installation de NodeJS et NPM" ON \
+"yarn" "Installation de yarn" ON \
 "add-virtualhost" "Installation du script d'ajout de virtualhost pour apache2" ON \
 "cleaning" "Nettoyage de l'installation" ON 2>"$TEMP_FILE"
 DIALOG_RESPONSE="$?"
